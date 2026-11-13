@@ -1,0 +1,1270 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-13T22:41:29.265Z",
+  "offers": [
+    {
+      "schemaVersion": 1,
+      "id": "experimenta:74891",
+      "provider": "experimenta",
+      "sourceId": "74891",
+      "sourceUrl": "https://www.experimenta.science/besuchen/veranstaltungskalender/meine-freundin-roxy/",
+      "title": "Meine Freundin Roxy",
+      "description": "Als Lizzi einen kaputten Roboter findet, startet für die beiden ein Abenteuer voller Technik, Freundschaft und Neugier. Ab 6 Jahren.",
+      "topics": [
+        "ai"
+      ],
+      "age": {
+        "min": 6,
+        "max": null
+      },
+      "schedule": [
+        {
+          "date": "2026-11-14",
+          "startTime": "11:30",
+          "endTime": "12:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-11-17",
+          "startTime": "09:30",
+          "endTime": "10:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-11-21",
+          "startTime": "11:30",
+          "endTime": "12:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-11-28",
+          "startTime": "11:30",
+          "endTime": "12:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-02",
+          "startTime": "09:30",
+          "endTime": "10:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-05",
+          "startTime": "12:30",
+          "endTime": "13:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-06",
+          "startTime": "10:30",
+          "endTime": "11:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-10",
+          "startTime": "09:30",
+          "endTime": "10:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-19",
+          "startTime": "13:30",
+          "endTime": "14:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-20",
+          "startTime": "11:30",
+          "endTime": "12:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-21",
+          "startTime": "13:00",
+          "endTime": "13:35",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-23",
+          "startTime": "11:00",
+          "endTime": "11:35",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-27",
+          "startTime": "13:30",
+          "endTime": "14:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-29",
+          "startTime": "10:00",
+          "endTime": "10:35",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-29",
+          "startTime": "15:00",
+          "endTime": "15:35",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-01-05",
+          "startTime": "12:00",
+          "endTime": "12:35",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-01-07",
+          "startTime": "12:00",
+          "endTime": "12:35",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-01-09",
+          "startTime": "12:30",
+          "endTime": "13:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-01-10",
+          "startTime": "10:30",
+          "endTime": "11:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-01-13",
+          "startTime": "09:30",
+          "endTime": "10:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-01-17",
+          "startTime": "10:30",
+          "endTime": "11:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-01-19",
+          "startTime": "09:30",
+          "endTime": "10:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-01-23",
+          "startTime": "12:30",
+          "endTime": "13:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-02-07",
+          "startTime": "12:30",
+          "endTime": "13:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-02-08",
+          "startTime": "11:00",
+          "endTime": "11:35",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-02-10",
+          "startTime": "13:00",
+          "endTime": "13:35",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-02-14",
+          "startTime": "10:30",
+          "endTime": "11:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-02-20",
+          "startTime": "12:30",
+          "endTime": "13:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-02-28",
+          "startTime": "10:30",
+          "endTime": "11:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-03-18",
+          "startTime": "09:30",
+          "endTime": "10:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-03-24",
+          "startTime": "12:00",
+          "endTime": "12:35",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-03-25",
+          "startTime": "11:00",
+          "endTime": "11:35",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-03-28",
+          "startTime": "11:30",
+          "endTime": "12:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-03-31",
+          "startTime": "11:00",
+          "endTime": "11:35",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-04-06",
+          "startTime": "09:30",
+          "endTime": "10:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-05-03",
+          "startTime": "09:30",
+          "endTime": "10:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-06-14",
+          "startTime": "09:30",
+          "endTime": "10:05",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-07-13",
+          "startTime": "09:30",
+          "endTime": "10:05",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "experimenta Heilbronn"
+      },
+      "price": {
+        "type": "unknown",
+        "currency": "EUR"
+      },
+      "availability": "unknown",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "aim:262410KIDT",
+      "provider": "aim",
+      "sourceId": "262410KIDT",
+      "sourceUrl": "https://www.aim-akademie.org/kurse/kurs/KI-Detektive-KI-generierte-Bilder-Videos-und-Stimmen-erkennen-10-15-Jahre/262410KIDT",
+      "title": "Werde zum KI-Detektiv: KI-generierte Bilder, Videos und Stimmen erkennen (ab 10 Jahren)",
+      "description": "Erkenne KI-generierte Bilder, Videos und Stimmen und lerne, digitale Inhalte kritisch zu prüfen. Echt oder KI? In diesem Workshop gehst du als KI-Detektivin oder KI-Detektiv auf Spurensuche. Du untersuchst Bilder, Videos und Stimmen, entlarvst verdächtige Details und findest heraus, wie künstliche Inhalte entstehen. Gemeinsam mit den anderen Teilnehmenden löst du spannende Medienfälle und produzierst mit dem iPad sogar ein eigenes Beispiel. So lernst du spielerisch, digitale Inhalte kritisch zu prüfen. Was dich erwartet Teilnehmen Diese Veranstaltung richtet sich an neugierige Kinder und Jugendliche ab 10 bis 15 Jahre, die gerne rätseln, entdecken und kreativ mit digitalen Medien arbeiten. Vorkenntnisse in Künstlicher Intelligenz oder Medienproduktion sind nicht erforderlich. Bitte mitbringen Getränke und Verpflegung für die Pause. Dieser Kurs ist ein Ganztagesangebot. Die Teilnehmenden verbringen die Mittagspause in der Gruppe und werden durch den Dozierenden beaufsichtigt. Allgemeine Hinweise In den Räumlichkeiten der aim gibt es keine Mittagspausenbetreuung. In Einzelfällen werden bei Ganztagesangeboten die Teilnehmenden durch die/den Dozent/-in betreut, dies ist beim jeweiligen Kurs vermerkt. Wir weisen ausdrücklich darauf hin, dass die übliche Schülerunfallversicherung möglicherweise bei einem Schadensfall (z.B. Unfall auf dem Weg zum Veranstaltungsort bzw. auf dem Heimweg) nicht greift. Da wir jede Haftung im Schadensfall ausschließen müssen, empfehlen wir dringend, eine Unfallversicherung abzuschließen, die auch für vergleichbar andere Aktivitäten außerhalb des Schullebens in Anspruch genommen werden kann.",
+      "topics": [
+        "ai"
+      ],
+      "age": {
+        "min": 10,
+        "max": 15
+      },
+      "schedule": [
+        {
+          "date": "2026-11-14",
+          "startTime": "10:30",
+          "endTime": "16:00",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Bildungscampus"
+      },
+      "price": {
+        "type": "free",
+        "currency": "EUR"
+      },
+      "availability": "available",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "aim:262420PAI",
+      "provider": "aim",
+      "sourceId": "262420PAI",
+      "sourceUrl": "https://www.aim-akademie.org/kurse/kurs/Python-lernen-mit-KI-ab-16-Jahren/262420PAI",
+      "title": "Python lernen mit KI (ab 16 Jahren)",
+      "description": "Dein smarter Start in Python: mit erfahrenem Dozenten und persönlichem KI-Tutor Programmieren lernen war noch nie so einfach: In diesem Kurs lernst du Schritt für Schritt die Grundlagen von Python, einer weltweit eingesetzten und für Einsteigende super geeigneten Programmiersprache, kennen. Dabei kombinieren wir die Erfahrung und die didaktischen Konzepte eines Dozenten mit der individuellen Unterstützung eines KI-Tutors. So lernst du praxisnah, interaktiv und in deinem eigenen Tempo. Was dich erwartet Teilnehmen Der Kurs richtet sich an Jugendliche ab 16 Jahren und Erwachsene ohne Vorkenntnisse. Alles, was du brauchst, ist Neugier, den Rest stellen wir dir zur Verfügung.",
+      "topics": [
+        "ai",
+        "coding"
+      ],
+      "age": {
+        "min": 16,
+        "max": null
+      },
+      "schedule": [
+        {
+          "date": "2026-11-16",
+          "startTime": "16:30",
+          "endTime": "18:30",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Bildungscampus"
+      },
+      "price": {
+        "type": "free",
+        "currency": "EUR"
+      },
+      "availability": "unknown",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "aim:262420SC",
+      "provider": "aim",
+      "sourceId": "262420SC",
+      "sourceUrl": "https://www.aim-akademie.org/kurse/kurs/Visuelle-Programmierung-mit-Scratch-Reise-zum-Planeten-Mars-811-Jahre/262420SC",
+      "title": "Visuelle Programmierung mit Scratch – Reise zum Planeten Mars (8–11 Jahre)",
+      "description": "Starte deine eigene Weltraummission und lerne, wie Programmieren geht! In unserem Kurs „Visuelle Programmierung mit Scratch – Reise zum Planeten Mars“ lernen Kinder von 8 bis 11 Jahren die Grundlagen des Programmierens. Mit Scratch, einer einfachen und intuitiven Programmiersprache, gestalten sie Animationen, Spiele und interaktive Geschichten – alles inspiriert von der faszinierenden Welt des Mars. Was dich erwartet Teilnehmen Der Kurs richtet sich an Kinder im Alter von 8 bis 11 Jahren, die bereits erste Erfahrungen im Umgang mit Maus und Tastatur gesammelt haben. Hinweis zur Datenverarbeitung Für die Durchführung des Kurses werden die Namen der Teilnehmenden an unseren Partner Algorithmics Heilbronn weitergegeben. Die Daten werden ausschließlich für den Workshop genutzt und nicht an Dritte weitergegeben. Mit der Anmeldung zum Kurs stimmen die Erziehungsberechtigten der Datenverarbeitung zu.",
+      "topics": [
+        "coding"
+      ],
+      "age": {
+        "min": 8,
+        "max": 11
+      },
+      "schedule": [
+        {
+          "date": "2026-11-17",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-11-24",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-01",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Bildungscampus"
+      },
+      "price": {
+        "type": "free",
+        "currency": "EUR"
+      },
+      "availability": "unknown",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "aim:262420PY",
+      "provider": "aim",
+      "sourceId": "262420PY",
+      "sourceUrl": "https://www.aim-akademie.org/kurse/kurs/Programmieren-lernen-mit-Python-1216-Jahre/262420PY",
+      "title": "Programmieren lernen mit Python (12–16 Jahre)",
+      "description": "Tauche ein in die faszinierende Welt des Programmierens! In unserem Grundkurs „Programmieren lernen mit Python\" entdeckst du, wie du mit einer der vielseitigsten und beliebtesten Programmiersprachen der Welt eigene Programme entwickeln und kreative Projekte umsetzen kannst. Egal, ob du erste Programmierkenntnisse sammeln möchtest oder einfach neugierig bist – dieser Kurs bietet dir den perfekten Einstieg. Was dich erwartet Teilnehmen Dieser Kurs richtet sich an Jugendliche von 12 bis 16 Jahren, die neugierig auf Technik und Programmierung sind und ihre eigenen Ideen in die Tat umsetzen wollen. Hinweis zur Datenverarbeitung Für die Durchführung des Kurses werden die Namen der Teilnehmenden an unseren Partner Algorithmics Heilbronn weitergegeben. Die Daten werden ausschließlich für den Workshop genutzt und nicht an Dritte weitergegeben. Mit der Anmeldung zum Kurs stimmen die Erziehungsberechtigten der Datenverarbeitung zu.",
+      "topics": [
+        "coding"
+      ],
+      "age": {
+        "min": 12,
+        "max": 16
+      },
+      "schedule": [
+        {
+          "date": "2026-11-18",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-11-25",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-02",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-09",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-16",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Bildungscampus"
+      },
+      "price": {
+        "type": "free",
+        "currency": "EUR"
+      },
+      "availability": "unknown",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "aim:262420RK2",
+      "provider": "aim",
+      "sourceId": "262420RK2",
+      "sourceUrl": "https://www.aim-akademie.org/kurse/kurs/Robotik-zum-Anfassen-2vom-analogen-ins-symbolbasierte-Programmieren710-Jahre/262420RK2",
+      "title": "Robotik zum Anfassen 2– vom analogen ins symbolbasierte Programmieren (7–10 Jahre)",
+      "description": "Programmier-Abenteuer zum Anfassen: Mit LEGO® Education kleine Roboter programmieren. Tauche ein in die spannende Welt der Robotik und des Programmierens! In diesem Kurs baust Du mit LEGO® Education kleine Roboter und lernst, sie mithilfe von Symbolen auf dem Tablet zu programmieren. Spielerisch entdeckst Du, wie Roboter Befehle verstehen und auf Deine Programmierung reagieren. Was dich erwartet Teilnehmen Diese Veranstaltung richtet sich an Schüler/-innen der Klassen 2–4, die ihre ersten Erfahrungen mit Robotik und Programmierung vertiefen möchten. Die Teilnahme am Kurs „Robotik zum Anfassen – analoges Programmieren ganz ohne Bildschirm“ ist hilfreich, aber keine Voraussetzung. Mitbringen Du kannst dir gerne einen kleinen Snack für die Pause mitbringen. Deine Trinkflasche kannst du auf demselben Stockwerk auffüllen. Da der Kursraum klimatisiert ist, bring am besten eine Weste oder einen Pullover mit. Melde dich an und starte dein Abenteuer in die Welt der Robotik!",
+      "topics": [
+        "ai",
+        "coding"
+      ],
+      "age": {
+        "min": 7,
+        "max": 10
+      },
+      "schedule": [
+        {
+          "date": "2026-11-18",
+          "startTime": "15:00",
+          "endTime": "16:30",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Bildungscampus"
+      },
+      "price": {
+        "type": "free",
+        "currency": "EUR"
+      },
+      "availability": "unknown",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "hdf:261H207004",
+      "provider": "hdf",
+      "sourceId": "261H207004",
+      "sourceUrl": "https://hdf-hn.de/kurs/data-literacy-for-kids-von-bausteinen-zum-balkendiagramm-261H207004/",
+      "title": "Data Literacy for Kids: Von Bausteinen zum Balkendiagramm",
+      "description": "Willkommen in der Welt der Daten! Hier wird gesammelt, gezählt und gezeichnet – mit bunten Bausteinen, Lieblingsfarben und kleinen Spielen. Gemeinsam mit ihren Eltern entdecken Kinder, wie man Dinge sortiert, Strichlisten macht und spannende Diagramme erstellt. \nDamon, das neugierige Datenmonster, begleitet uns dabei und stellt Fragen wie: „Von welcher Farbe habe ich die meisten Legosteine?“ oder „Wie viele rote Dinge finden wir gemeinsam?“. Mit seiner Hilfe verwandeln wir unsere Entdeckungen in bunte Datenbilder und lernen ganz nebenbei, warum Daten so wichtig für künstliche Intelligenz (KI) sind – denn ohne Daten kann KI nichts lernen oder verstehen. Ganz ohne Computer, dafür mit viel Kreativität und Bewegung. Die Kinder brauchen keine Vorkenntnisse – Neugier, Spaß am Mitmachen und Lust aufs Entdecken reichen völlig aus.",
+      "topics": [
+        "ai"
+      ],
+      "age": {
+        "min": 4,
+        "max": 7
+      },
+      "schedule": [
+        {
+          "date": "2026-11-21",
+          "startTime": "10:00",
+          "endTime": "12:00",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-11-22",
+          "startTime": "10:00",
+          "endTime": "12:00",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Heilbronn, Haus der Familie, Erich-Mendelsohn-Str. 1C, Raum 8"
+      },
+      "price": {
+        "type": "paid",
+        "amountCents": 1000,
+        "currency": "EUR"
+      },
+      "availability": "available",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "aim:262420PCB",
+      "provider": "aim",
+      "sourceId": "262420PCB",
+      "sourceUrl": "https://www.aim-akademie.org/kurse/kurs/Einfuehrung-in-die-Programmierung-mit-Mikrocontrollern-1215-Jahre/262420PCB",
+      "title": "Kleine Computer, große Wirkung – Einführung in die Programmierung mit Mikrocontrollern (12–15 Jahre)",
+      "description": "Wie bringt man ein kleines Licht zum Blinken? Wie merkt ein Computer, dass du einen Knopf gedrückt hast? Und wie kann ein kleines Messgerät dabei helfen, unser Wasser zu untersuchen? In diesem Kurs probierst du genau das aus. Dazu arbeitest du mit einem kleinen Computer, einem Mikrocontroller. Hinzu kommen Bauteile wie Lichter, Knöpfe, Schalter und Sensoren. Schritt für Schritt lernst du, wie du diese anschließest und mit einfachen Befehlen steuerst. So siehst du sofort, was dein Code bewirkt. Dabei lernst du wichtige Grundlagen der Programmierung kennen, zum Beispiel wie ein Programm sich Dinge merkt, Abläufe wiederholt oder Entscheidungen trifft. Am Ende nutzt du dein Wissen für ein kleines Projekt: Du untersuchst mit Sensoren verschiedene Wasserproben und vergleichst die Ergebnisse. So siehst du, wie Programmierung und Technik helfen können, Unterschiede im Wasser sichtbar zu machen. Begleitet wirst du von einem erfahrenen Dozenten, der dir alles verständlich erklärt und dich beim Ausprobieren unterstützt. Du brauchst keine Vorkenntnisse in Programmierung oder Elektronik. Was dich erwartet Teilnehmen Der Kurs richtet sich an Schüler/-innen zwischen 12 und 15 Jahren. Du brauchst keine Vorkenntnisse in Programmierung oder Elektronik. Es reicht, wenn du einen PC grundsätzlich bedienen kannst und neugierig auf Technik, Ausprobieren und Tüfteln bist. Mitbringen Alle Materialien, Bauteile und Geräte werden für die Dauer des Kurses gestellt. Du brauchst nichts mitzubringen.",
+      "topics": [
+        "coding"
+      ],
+      "age": {
+        "min": 12,
+        "max": 15
+      },
+      "schedule": [
+        {
+          "date": "2026-11-27",
+          "startTime": "16:30",
+          "endTime": "18:00",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-04",
+          "startTime": "16:30",
+          "endTime": "18:00",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2026-12-11",
+          "startTime": "16:30",
+          "endTime": "18:00",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Bildungscampus"
+      },
+      "price": {
+        "type": "free",
+        "currency": "EUR"
+      },
+      "availability": "full",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "hdf:261H304002",
+      "provider": "hdf",
+      "sourceId": "261H304002",
+      "sourceUrl": "https://hdf-hn.de/kurs/programmieren-lernen-scratch-261H304002/",
+      "title": "Programmieren Lernen - Scratch",
+      "description": "In diesem Workshop erlernen die Kinder die visuelle Programmiersprache Scratch, speziell für Kinder konzipiert. Ganz ohne Vorkenntnisse können die Kinder durch das Zusammenfügen von Code-Blöcken eigene Programme erstellen. In Zweiergruppen entdecken sie die Grundlagen des Programmierens und gestalten ihre eigenen Charaktere, die sie zum Leben erwecken - sie lassen sie laufen, hüpfen und spannende Aufgaben meistern. Scratch fördert kreatives Denken und Problemlösungsfähigkeiten, da die Kinder lernen, logische Abläufe zu erstellen und ihre Ideen in digitale Projekte umzusetzen.",
+      "topics": [
+        "coding"
+      ],
+      "age": {
+        "min": 8,
+        "max": 12
+      },
+      "schedule": [
+        {
+          "date": "2026-11-28",
+          "startTime": "12:30",
+          "endTime": "15:30",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Heilbronn, Haus der Familie, Erich-Mendelsohn-Str. 1C, Raum 4"
+      },
+      "price": {
+        "type": "paid",
+        "amountCents": 3000,
+        "currency": "EUR"
+      },
+      "availability": "waitlist",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "hdf:261H207006",
+      "provider": "hdf",
+      "sourceId": "261H207006",
+      "sourceUrl": "https://hdf-hn.de/kurs/maerchenhaft-mit-scratchjunior-eine-geschichte-programmieren-das-mutige-tier-261H207006/",
+      "title": "Märchenhaft mit ScratchJunior eine Geschichte programmieren: Das mutige Tier",
+      "description": "In diesem Workshop machen wir es uns zuerst gemütlich und lauschen einem spannenden Märchen – voller Tiere, Abenteuer und einer kleinen Portion Mut. Anschließend verwandeln wir die Geschichte gemeinsam mit ScratchJunior, einer kindgerechten Programmiersprache, in einen eigenen bunten Trickfilm.\nMit fröhlich-farbigen Programmierblöcken gestalten die Kinder eigene Szenen, lassen Figuren sprechen, hüpfen oder schleichen und denken sich neue Ideen zur Geschichte aus. So entdecken sie spielerisch, wie Programmieren funktioniert und erleben, wie aus einem Märchen ein lebendiges kleines Abenteuer entsteht. Die Eltern begleiten ihre Kinder aktiv und unterstützen den Bildungsprozess.",
+      "topics": [
+        "coding"
+      ],
+      "age": {
+        "min": 4,
+        "max": 7
+      },
+      "schedule": [
+        {
+          "date": "2026-12-05",
+          "startTime": "09:30",
+          "endTime": "11:30",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Heilbronn, Haus der Familie, Erich-Mendelsohn-Str. 1C, Raum 3"
+      },
+      "price": {
+        "type": "paid",
+        "amountCents": 1000,
+        "currency": "EUR"
+      },
+      "availability": "waitlist",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "hdf:261H207007",
+      "provider": "hdf",
+      "sourceId": "261H207007",
+      "sourceUrl": "https://hdf-hn.de/kurs/roboter-verstehen-programmieren-entdecken-stufe-2-261H207007/",
+      "title": "Roboter - Verstehen, Programmieren, Entdecken - Stufe 2",
+      "description": "In diesem Kurs tauchen Kinder gemeinsam mit ihren Eltern noch tiefer in die Welt der Robotik und des Programmierens ein. Mit LEGO® Education bauen sie kleine Roboter und lernen anschließend, diese mithilfe von Symbolen auf dem Tablet zu programmieren.\nAn Bodenstationen lösen die Kinder spannende Aufgaben, testen ihre Ideen und erleben direkt, wie der Roboter auf ihre Programmierung reagiert. Dabei wird schnell klar: Programmieren bedeutet vor allem ausprobieren, nachdenken, verbessern – und auch aus Fehlern lernen.\nDie Kinder entwickeln spielerisch algorithmisches und logisches Denken und lernen Abläufe Schritt für Schritt zu planen, zu testen und zu verbessern. Gleichzeitig stärken sie ihre digitale Kompetenz und erleben das Tablet nicht nur als Unterhaltungsmedium, sondern als kreatives Werkzeug, mit dem sie eigene Ideen umsetzen können.\nBesonders wertvoll ist dabei die gemeinsame Zeit: Eltern und Kinder tüfteln als Team, freuen sich über gelungene Lösungen und entdecken mit viel Spaß, wie aus Ideen funktionierende Programme entstehen.\nDie Teilnahme an dem Vorgängerkurs \"Roboter - Verstehen, Programmieren, Entdecken - Stufe 1\" wird empfohlen, da dort wichtige Grundlagen vermittelt werden, stellt jedoch keine Voraussetzung dar.\nDer Kurs wird von der Bildungsinitiative ROKI – Robotic4Kids durchgeführt.",
+      "topics": [
+        "ai",
+        "coding"
+      ],
+      "age": {
+        "min": 4,
+        "max": 7
+      },
+      "schedule": [
+        {
+          "date": "2027-01-16",
+          "startTime": "10:00",
+          "endTime": "11:30",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-01-23",
+          "startTime": "10:00",
+          "endTime": "11:30",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Heilbronn, Haus der Familie, Erich-Mendelsohn-Str. 1C, Raum 8"
+      },
+      "price": {
+        "type": "paid",
+        "amountCents": 1000,
+        "currency": "EUR"
+      },
+      "availability": "waitlist",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "hdf:261H207016",
+      "provider": "hdf",
+      "sourceId": "261H207016",
+      "sourceUrl": "https://hdf-hn.de/kurs/roboter-verstehen-programmieren-entdecken-stufe-2-261H207016/",
+      "title": "Roboter - Verstehen, Programmieren, Entdecken - Stufe 2",
+      "description": "In diesem Kurs tauchen Kinder gemeinsam mit ihren Eltern noch tiefer in die Welt der Robotik und des Programmierens ein. Mit LEGO® Education bauen sie kleine Roboter und lernen anschließend, diese mithilfe von Symbolen auf dem Tablet zu programmieren.\nAn Bodenstationen lösen die Kinder spannende Aufgaben, testen ihre Ideen und erleben direkt, wie der Roboter auf ihre Programmierung reagiert. Dabei wird schnell klar: Programmieren bedeutet vor allem ausprobieren, nachdenken, verbessern – und auch aus Fehlern lernen.\nDie Kinder entwickeln spielerisch algorithmisches und logisches Denken und lernen Abläufe Schritt für Schritt zu planen, zu testen und zu verbessern. Gleichzeitig stärken sie ihre digitale Kompetenz und erleben das Tablet nicht nur als Unterhaltungsmedium, sondern als kreatives Werkzeug, mit dem sie eigene Ideen umsetzen können.\nBesonders wertvoll ist dabei die gemeinsame Zeit: Eltern und Kinder tüfteln als Team, freuen sich über gelungene Lösungen und entdecken mit viel Spaß, wie aus Ideen funktionierende Programme entstehen.\nDie Teilnahme an dem Vorgängerkurs \"Roboter - Verstehen, Programmieren, Entdecken - Stufe 1\" wird empfohlen, da dort wichtige Grundlagen vermittelt werden, stellt jedoch keine Voraussetzung dar.\nDer Kurs wird von der Bildungsinitiative ROKI – Robotic4Kids durchgeführt.",
+      "topics": [
+        "ai",
+        "coding"
+      ],
+      "age": {
+        "min": 4,
+        "max": 7
+      },
+      "schedule": [
+        {
+          "date": "2027-01-16",
+          "startTime": "12:30",
+          "endTime": "14:00",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-01-23",
+          "startTime": "12:30",
+          "endTime": "14:00",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Heilbronn, Haus der Familie, Erich-Mendelsohn-Str. 1C, Raum 8"
+      },
+      "price": {
+        "type": "paid",
+        "amountCents": 1000,
+        "currency": "EUR"
+      },
+      "availability": "waitlist",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "hdf:261H207017",
+      "provider": "hdf",
+      "sourceId": "261H207017",
+      "sourceUrl": "https://hdf-hn.de/kurs/roboter-verstehen-programmieren-entdecken-stufe-2-261H207017/",
+      "title": "Roboter - Verstehen, Programmieren, Entdecken - Stufe 2",
+      "description": "In diesem Kurs tauchen Kinder gemeinsam mit ihren Eltern noch tiefer in die Welt der Robotik und des Programmierens ein. Mit LEGO® Education bauen sie kleine Roboter und lernen anschließend, diese mithilfe von Symbolen auf dem Tablet zu programmieren.\nAn Bodenstationen lösen die Kinder spannende Aufgaben, testen ihre Ideen und erleben direkt, wie der Roboter auf ihre Programmierung reagiert. Dabei wird schnell klar: Programmieren bedeutet vor allem ausprobieren, nachdenken, verbessern – und auch aus Fehlern lernen.\nDie Kinder entwickeln spielerisch algorithmisches und logisches Denken und lernen Abläufe Schritt für Schritt zu planen, zu testen und zu verbessern. Gleichzeitig stärken sie ihre digitale Kompetenz und erleben das Tablet nicht nur als Unterhaltungsmedium, sondern als kreatives Werkzeug, mit dem sie eigene Ideen umsetzen können.\nBesonders wertvoll ist dabei die gemeinsame Zeit: Eltern und Kinder tüfteln als Team, freuen sich über gelungene Lösungen und entdecken mit viel Spaß, wie aus Ideen funktionierende Programme entstehen.\nDie Teilnahme an dem Vorgängerkurs \"Roboter - Verstehen, Programmieren, Entdecken - Stufe 1\" wird empfohlen, da dort wichtige Grundlagen vermittelt werden, stellt jedoch keine Voraussetzung dar.\nDer Kurs wird von der Bildungsinitiative ROKI – Robotic4Kids durchgeführt.",
+      "topics": [
+        "ai",
+        "coding"
+      ],
+      "age": {
+        "min": 4,
+        "max": 7
+      },
+      "schedule": [
+        {
+          "date": "2027-01-16",
+          "startTime": "14:30",
+          "endTime": "16:00",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-01-23",
+          "startTime": "14:30",
+          "endTime": "16:00",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Heilbronn, Haus der Familie, Erich-Mendelsohn-Str. 1C, Raum 8"
+      },
+      "price": {
+        "type": "paid",
+        "amountCents": 1000,
+        "currency": "EUR"
+      },
+      "availability": "waitlist",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "hdf:261H207008",
+      "provider": "hdf",
+      "sourceId": "261H207008",
+      "sourceUrl": "https://hdf-hn.de/kurs/spielerisch-mit-scratchjunior-eine-gruenere-saubere-welt-programmieren-261H207008/",
+      "title": "Spielerisch mit ScratchJunior eine grünere, saubere Welt programmieren",
+      "description": "In diesem fröhlichen Mitmach-Workshop entdecken wir gemeinsam, wie spannend Programmieren sein kann. Programmieren ist eine eigene Sprache – und mit ScratchJunior können schon die Jüngsten sie spielerisch lernen. Ganz ohne Vorkenntnisse gestalten die kleinen Programmierer eigene interaktive Geschichten, lustige Animationen und spaßige Spiele. \nGemeinsam tauchen wir in eine nachhaltige Welt ein, in der wir bunte Blumen und Obstbäume pflanzen, summende Bienen und flatternde Schmetterling retten und Müll einsammeln. Dabei lernen die Kinder die ersten Grundlagen der Programmierung kennen, während sie gleichzeitig für Umweltschutz sensibilisiert werden. \nDer Fokus liegt auf dem gemeinsamen Lernen, Experimentieren und Entdecken. Eltern begleiten ihre Kinder aktiv und unterstützen den Bildungsprozess.",
+      "topics": [
+        "coding"
+      ],
+      "age": {
+        "min": 4,
+        "max": 7
+      },
+      "schedule": [
+        {
+          "date": "2027-01-30",
+          "startTime": "09:30",
+          "endTime": "11:30",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Heilbronn, Haus der Familie, Erich-Mendelsohn-Str. 1C, Raum 5"
+      },
+      "price": {
+        "type": "paid",
+        "amountCents": 1000,
+        "currency": "EUR"
+      },
+      "availability": "available",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "aim:271430UN",
+      "provider": "aim",
+      "sourceId": "271430UN",
+      "sourceUrl": "https://www.aim-akademie.org/kurse/kurs/Spieleentwicklung-mit-Unity-fuer-Einsteiger-1014-Jahre/271430UN",
+      "title": "Spieleentwicklung mit Unity für Einsteiger (10–14 Jahre)",
+      "description": "Entwickle dein eigenes Videospiel mit der Spiele-Engine aus Games wie Among Us oder Pokémon Go Stell dir vor du drückst „Play\" und dein eigenes Spiel startet. Genau das passiert in diesem Workshop mit Hilfe von Unity! Unity ist eine der weltweit beliebtesten Spiele-Engines, mit der vielfältige Spiele umgesetzt werden können. Sie dient als eine Art Baukasten, der Entwicklern bereits fertige Funktionen für Grafik, Physik und Sound liefert. Im Workshop dreht sich alles um machen, testen und spielen! Du lernst die Spiele-Engine kennen und entwickelst Schritt für Schritt dein eigenes Spiel. Dabei lernst du, wie Figuren, Level und Spielmechaniken entstehen und löst kreative Herausforderungen. Am Ende präsentierst du dein fertiges Spiel und kannst das natürlich auch selbst spielen! Und das Beste: Dein fertiges Spiel gehört dir! Was dich erwartet TeilnehmenDieser Workshop richtet sich an Kinder und Jugendliche zwischen 10 und 14 Jahren, die Lust haben, hinter die Kulissen von Videospielen zu schauen und sowohl Neugier als auch sichere Maus- und Tastaturkenntnisse mitbringen. Adresse Hochschule Heilbronn – TechCampus | Max-Planck-Straße 39, 74081 Heilbronn | Treffpunkt: Haupteingang Allgemeine Hinweise Wir weisen ausdrücklich darauf hin, dass die übliche Schülerunfallversicherung möglicherweise bei einem Schadensfall (z.B. Unfall auf dem Weg zum Veranstaltungsort bzw. auf dem Heimweg) nicht greift. Da wir jede Haftung im Schadensfall ausschließen müssen, empfehlen wir dringend, eine Unfallversicherung abzuschließen, die auch für vergleichbar andere Aktivitäten außerhalb des Schullebens in Anspruch genommen werden kann.",
+      "topics": [
+        "gaming"
+      ],
+      "age": {
+        "min": 10,
+        "max": 14
+      },
+      "schedule": [
+        {
+          "date": "2027-02-03",
+          "startTime": "15:30",
+          "endTime": "19:30",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Hochschule Heilbronn, TechCampus"
+      },
+      "price": {
+        "type": "free",
+        "currency": "EUR"
+      },
+      "availability": "full",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "aim:271430CYC1",
+      "provider": "aim",
+      "sourceId": "271430CYC1",
+      "sourceUrl": "https://www.aim-akademie.org/kurse/kurs/Craft-Your-City-Baue-deine-nachhaltige-und-smarte-Traumstadt-1014-Jahre/271430CYC1",
+      "title": "Craft Your City – Baue deine nachhaltige und smarte Traumstadt (10–14 Jahre)",
+      "description": "Kreatives, nachhaltiges und gemeinsames Bauen in der Sandbox-Welt von Luanti Wie sieht eine Stadt aus, in der du gerne leben möchtest? In diesem Workshop planst und baust du gemeinsam mit anderen eine nachhaltige und smarte Stadt in der Sandbox-Welt von Luanti (ähnlich wie Minecraft). Dabei entwickelst du kreative Ideen, arbeitest im Team und lernst spielerisch, wie Städte für die Zukunft gestaltet werden können. Du baust Parks, Wohnungen, Transportmittel, öffentliche Gebäude und entwickelst Aktivitäten für den Stadtraum. Was dich erwartet Teilnehmen Dieser Workshop richtet sich an Kinder und Jugendliche zwischen 10 und 14 Jahren, die die Welt von morgen gestalten möchten. Bitte mitbringen Getränke und Verpflegung für die Pause. Dieser Kurs ist ein Ganztagesangebot. Die Teilnehmenden verbringen die Mittagspause in der Gruppe und werden durch den Dozierenden beaufsichtigt. Allgemeine Hinweise In den Räumlichkeiten der aim gibt es keine Mittagspausenbetreuung. In Einzelfällen werden bei Ganztagesangeboten die Teilnehmenden durch die/den Dozent/-in betreut, dies ist beim jeweiligen Kurs vermerkt. Wir weisen ausdrücklich darauf hin, dass die übliche Schülerunfallversicherung möglicherweise bei einem Schadensfall (z.B. Unfall auf dem Weg zum Veranstaltungsort bzw. auf dem Heimweg) nicht greift. Da wir jede Haftung im Schadensfall ausschließen müssen, empfehlen wir dringend, eine Unfallversicherung abzuschließen, die auch für vergleichbar andere Aktivitäten außerhalb des Schullebens in Anspruch genommen werden kann.",
+      "topics": [
+        "gaming"
+      ],
+      "age": {
+        "min": 10,
+        "max": 14
+      },
+      "schedule": [
+        {
+          "date": "2027-02-09",
+          "startTime": "09:00",
+          "endTime": "15:00",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-02-10",
+          "startTime": "09:00",
+          "endTime": "15:00",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-02-11",
+          "startTime": "09:00",
+          "endTime": "15:00",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Bildungscampus"
+      },
+      "price": {
+        "type": "free",
+        "currency": "EUR"
+      },
+      "availability": "full",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "aim:271420RK1",
+      "provider": "aim",
+      "sourceId": "271420RK1",
+      "sourceUrl": "https://www.aim-akademie.org/kurse/kurs/Robotik-zum-Anfassen-1-analoges-Programmieren-ganz-ohne-Bildschirm-710-Jahre/271420RK1",
+      "title": "Robotik zum Anfassen 1 – analoges Programmieren ganz ohne Bildschirm (7–10 Jahre)",
+      "description": "Programmier-Abenteuer zum Anfassen: Mit kleinen Robotern spielerisch die Grundlagen entdecken Entdecke die faszinierende Welt der Robotik! In diesem Kurs lernen Kinder spielerisch, wie man Programme erstellt, die Roboter zum Leben erwecken. Durch kreative Aufgaben und Teamarbeit werden logisches Denken und Problemlösungsfähigkeiten gefördert – und das ganz ohne Bildschirm! Was dich erwartet Teilnehmen Diese Veranstaltung richtet sich an Schüler/-innen von Klasse 2-4, die neugierig auf Robotik sind und in einem kreativen Umfeld lernen möchten. Mitbringen Du kannst dir gerne einen kleinen Snack für die Pause mitbringen. Deine Trinkflasche kannst du auf demselben Stockwerk auffüllen. Da der Kursraum klimatisiert ist, bring am besten eine Weste oder einen Pullover mit. Melde dich an und starte dein Abenteuer in die Welt der Robotik!",
+      "topics": [
+        "ai",
+        "coding"
+      ],
+      "age": {
+        "min": 7,
+        "max": 10
+      },
+      "schedule": [
+        {
+          "date": "2027-02-17",
+          "startTime": "15:00",
+          "endTime": "16:30",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-02-24",
+          "startTime": "15:00",
+          "endTime": "16:30",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-03-03",
+          "startTime": "15:00",
+          "endTime": "16:30",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Bildungscampus"
+      },
+      "price": {
+        "type": "free",
+        "currency": "EUR"
+      },
+      "availability": "full",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "hdf:272H207001",
+      "provider": "hdf",
+      "sourceId": "272H207001",
+      "sourceUrl": "https://hdf-hn.de/kurs/data-literacy-for-kids-trends-und-anteile-272H207001/",
+      "title": "Data Literacy for Kids: Trends und Anteile",
+      "description": "Willkommen im nächsten Datenabenteuer! In diesem Workshop entdecken Kinder spielerisch, wie man Veränderungen sichtbar macht und Anteile versteht – mit einfachen Alltagsbeobachtungen, kleinen Experimenten und gemeinsamen Aktivitäten. Gemeinsam mit ihren Eltern lernen sie, wie man Reihenfolgen erkennt, Veränderungen beobachtet und daraus Liniendiagramme und Kreisdiagramme gestaltet. Damon, das neugierige Datenmonster, ist wieder dabei und fragt: „Wie verändert sich etwas über die Zeit?“ oder „Welcher Teil ist der Größte?“. Mit seiner Hilfe verwandeln wir unsere Beobachtungen in bunte Datenbilder und erfahren ganz nebenbei, warum solche Diagramme wichtig sind, um Muster zu erkennen – auch für künstliche Intelligenz. Ganz ohne Computer, dafür mit viel Kreativität, Bewegung und Spaß. Vorkenntnisse sind nicht nötig – Neugier und Lust aufs Ausprobieren reichen völlig aus. \nDer Kurs eignet sich sowohl für neue Datenabenteurer als auch für alle, die Damon bereits aus dem ersten Workshop kennen.",
+      "topics": [
+        "ai"
+      ],
+      "age": {
+        "min": 4,
+        "max": 7
+      },
+      "schedule": [
+        {
+          "date": "2027-02-20",
+          "startTime": "10:00",
+          "endTime": "12:00",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-02-21",
+          "startTime": "10:00",
+          "endTime": "12:00",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Heilbronn, Haus der Familie, Erich-Mendelsohn-Str. 1C, Raum 4"
+      },
+      "price": {
+        "type": "paid",
+        "amountCents": 1000,
+        "currency": "EUR"
+      },
+      "availability": "available",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "aim:271420SC",
+      "provider": "aim",
+      "sourceId": "271420SC",
+      "sourceUrl": "https://www.aim-akademie.org/kurse/kurs/Visuelle-Programmierung-mit-Scratch-Reise-zum-Planeten-Mars-811-Jahre/271420SC",
+      "title": "Visuelle Programmierung mit Scratch – Reise zum Planeten Mars (8–11 Jahre)",
+      "description": "Starte deine eigene Weltraummission und lerne, wie Programmieren geht! In unserem Kurs „Visuelle Programmierung mit Scratch – Reise zum Planeten Mars“ lernen Kinder von 8 bis 11 Jahren die Grundlagen des Programmierens. Mit Scratch, einer einfachen und intuitiven Programmiersprache, gestalten sie Animationen, Spiele und interaktive Geschichten – alles inspiriert von der faszinierenden Welt des Mars. Was dich erwartet Teilnehmen Der Kurs richtet sich an Kinder im Alter von 8 bis 11 Jahren, die bereits erste Erfahrungen im Umgang mit Maus und Tastatur gesammelt haben. Hinweis zur Datenverarbeitung Für die Durchführung des Kurses werden die Namen der Teilnehmenden an unseren Partner Algorithmics Heilbronn weitergegeben. Die Daten werden ausschließlich für den Workshop genutzt und nicht an Dritte weitergegeben. Mit der Anmeldung zum Kurs stimmen die Erziehungsberechtigten der Datenverarbeitung zu.",
+      "topics": [
+        "coding"
+      ],
+      "age": {
+        "min": 8,
+        "max": 11
+      },
+      "schedule": [
+        {
+          "date": "2027-02-23",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-03-02",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-03-09",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-03-16",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-03-23",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-04-06",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-04-13",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-04-20",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-04-27",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-05-04",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Bildungscampus"
+      },
+      "price": {
+        "type": "free",
+        "currency": "EUR"
+      },
+      "availability": "full",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "aim:271420FE",
+      "provider": "aim",
+      "sourceId": "271420FE",
+      "sourceUrl": "https://www.aim-akademie.org/kurse/kurs/Code-your-Chat-Entwickle-deine-eigene-Messenger-Web-App-1317-Jahre/271420FE",
+      "title": "Code your Chat – Entwickle deine eigene Messenger-Web-App (13–17 Jahre)",
+      "description": "Schritt für Schritt zur eigenen Messenger-App – von der Idee bis zur Web-App In diesem Kurs tauchst du in die Welt der Webentwicklung ein und baust deine eigene Messenger Web-App, inspiriert von Anwendungen wie WhatsApp, Discord oder Signal. Jede Woche kommt ein neues Puzzleteil dazu. Du startest mit dem Grundgerüst, gibst deiner App anschließend ihr Design und ergänzt nach und nach Funktionen, die deine App lebendig machen. Am Ende steht eine Web-App, die du selbst entwickelt hast – ein Ergebnis, das sich sehen lassen kann! KI steht dir als kreativer Helfer zur Seite. Sie zeigt dir Wege, wie du deine App aufbauen kannst, und hilft dir beim Coden. Dabei lernst du HTML, CSS und JavaScript kennen und merkst schnell, wie sicher du darin wirst. Du bringst deine eigenen Ideen ein, löst Herausforderungen auf deine Art und bekommst den Mut, digitale Projekte selbst anzupacken. Was du entwickelst Teilnehmen Der Kurs richtet sich an Jugendliche von 13 bis 17 Jahren, die ohne Vorkenntnisse in die Webentwicklung einsteigen und eigene digitale Ideen umsetzen wollen. Einen Laptop musst du nicht mitbringen, die aim stellt Geräte bereit. Wir empfehlen dir, vorher unseren Kurs „Programmieren lernen mit Python\" zu besuchen. Das macht dir den Einstieg noch leichter, ist aber keine Voraussetzung. Hinweis zur Datenverarbeitung Für die Durchführung des Kurses werden die Namen der Teilnehmenden an unseren Partner Algorithmics Heilbronn weitergegeben. Die Daten werden ausschließlich für den Kurs genutzt und nicht an Dritte weitergegeben. Mit der Anmeldung zum Kurs stimmen die Erziehungsberechtigten der Datenverarbeitung zu.",
+      "topics": [
+        "coding"
+      ],
+      "age": {
+        "min": 13,
+        "max": 17
+      },
+      "schedule": [
+        {
+          "date": "2027-02-25",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-03-04",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-03-11",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-03-18",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-04-08",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-04-15",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-04-22",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-04-29",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-05-13",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-06-03",
+          "startTime": "16:30",
+          "endTime": "18:10",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Bildungscampus"
+      },
+      "price": {
+        "type": "free",
+        "currency": "EUR"
+      },
+      "availability": "full",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "aim:271420SG",
+      "provider": "aim",
+      "sourceId": "271420SG",
+      "sourceUrl": "https://www.aim-akademie.org/kurse/kurs/Talking-Plants-Programmiere-deine-Pflanze-bis-sie-spricht-1216-Jahre/271420SG",
+      "title": "Talking Plants – Programmiere deine Pflanze, bis sie spricht (12–16 Jahre)",
+      "description": "Was wäre, wenn deine Pflanze plötzlich Nachrichten schicken könnte? In diesem Workshop entdeckst du, wie Internet of Things, Coding und KI zusammenwirken. Du verbindest einen Micro-Computer (keine Angst, das lernst du hier) mit einem Feuchtigkeitssensor und programmierst, wann deine Pflanze eine Nachricht auslösen soll. Du wählst Charakter-Eigenschaften für deine Pflanze aus, und ein KI-Sprachmodell macht daraus eine einzigartige Persönlichkeit mit eigener Ausdrucksweise. Sobald die Erde zu trocken wird, schickt dir deine Pflanze eine KI-generierte Nachricht. So erlebst du, wie Technologie echte Alltagsprobleme lösen kann. Was dich erwartet Teilnehmen Der Workshop richtet sich an Schüler ab der Sekundarstufe I im Alter von 12 bis 16 Jahren, die Interesse an Technologie, Coding und digitaler Kreativität haben. Vorkenntnisse brauchst du nicht.Geleitet wird der Workshop von der 42 Heilbronn Coding School.",
+      "topics": [
+        "ai",
+        "coding"
+      ],
+      "age": {
+        "min": 12,
+        "max": 16
+      },
+      "schedule": [
+        {
+          "date": "2027-03-10",
+          "startTime": "16:00",
+          "endTime": "19:15",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Bildungscampus"
+      },
+      "price": {
+        "type": "free",
+        "currency": "EUR"
+      },
+      "availability": "available",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "aim:271420RK2",
+      "provider": "aim",
+      "sourceId": "271420RK2",
+      "sourceUrl": "https://www.aim-akademie.org/kurse/kurs/Robotik-zum-Anfassen-2vom-analogen-ins-symbolbasierte-Programmieren710-Jahre/271420RK2",
+      "title": "Robotik zum Anfassen 2 – vom analogen ins symbolbasierte Programmieren (7–10 Jahre)",
+      "description": "Programmier-Abenteuer zum Anfassen: Mit LEGO® Education kleine Roboter programmieren. Tauche ein in die spannende Welt der Robotik und des Programmierens! In diesem Kurs baust Du mit LEGO® Education kleine Roboter und lernst, sie mithilfe von Symbolen auf dem Tablet zu programmieren. Spielerisch entdeckst Du, wie Roboter Befehle verstehen und auf Deine Programmierung reagieren. Was dich erwartet Teilnehmen Diese Veranstaltung richtet sich an Schüler/-innen der Klassen 2–4, die ihre ersten Erfahrungen mit Robotik und Programmierung vertiefen möchten. Die Teilnahme am Kurs „Robotik zum Anfassen – analoges Programmieren ganz ohne Bildschirm“ ist hilfreich, aber keine Voraussetzung. Mitbringen Du kannst dir gerne einen kleinen Snack für die Pause mitbringen. Deine Trinkflasche kannst du auf demselben Stockwerk auffüllen. Da der Kursraum klimatisiert ist, bring am besten eine Weste oder einen Pullover mit. Melde dich an und starte dein Abenteuer in die Welt der Robotik!",
+      "topics": [
+        "ai",
+        "coding"
+      ],
+      "age": {
+        "min": 7,
+        "max": 10
+      },
+      "schedule": [
+        {
+          "date": "2027-04-07",
+          "startTime": "15:00",
+          "endTime": "16:30",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-04-14",
+          "startTime": "15:00",
+          "endTime": "16:30",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-04-21",
+          "startTime": "15:00",
+          "endTime": "16:30",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Bildungscampus"
+      },
+      "price": {
+        "type": "free",
+        "currency": "EUR"
+      },
+      "availability": "full",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "aim:271420SDD",
+      "provider": "aim",
+      "sourceId": "271420SDD",
+      "sourceUrl": "https://www.aim-akademie.org/kurse/kurs/Future-Skills-Mit-Python-Datenbanken-die-Welt-von-morgen-gestalten-ab-14-J/271420SDD",
+      "title": "Future Skills: Mit Python & Datenbanken die Welt von morgen gestalten (ab 14 Jahre)",
+      "description": "Daten gehören zu den wichtigsten Ressourcen unserer Zeit – doch wie werden sie eigentlich gespeichert, analysiert und genutzt? Weißt du, warum immer genug Chips da sind, während kurz vor Ladenschluss manchmal das frische Obst fehlt? Oder noch wichtiger: Wie lässt sich verhindern, dass am Ende des Tages tonnenweise gute Lebensmittel im Müll landen?Hinter solchen Entscheidungen stecken Daten. In diesem interaktiven Workshop von Schwarz Digits wirst du selbst aktiv. Du blickst hinter die Kulissen von Supermärkten wie Lidl und Kaufland und erfährst, wie IT, Datenbanken und kluge Analysen reale Herausforderungen lösen können. Was dich erwartet: TeilnehmenDieser Workshop richtet sich an Schüler/-innen ab der 9. Klasse, die ein Verständnis für digitale Zukunftstechnologien und den Umgang mit Daten entwickeln möchten. Grundkenntnisse in Python werden vorausgesetzt. AdresseFerdinand-Braun-Straße 4/2, Bauteil A4/4 74074 Heilbronn",
+      "topics": [
+        "coding"
+      ],
+      "age": {
+        "min": 14,
+        "max": null
+      },
+      "schedule": [
+        {
+          "date": "2027-05-24",
+          "startTime": "09:00",
+          "endTime": "14:00",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-05-26",
+          "startTime": "09:00",
+          "endTime": "14:00",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-06-05",
+          "startTime": "09:00",
+          "endTime": "14:00",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Bildungscampus"
+      },
+      "price": {
+        "type": "free",
+        "currency": "EUR"
+      },
+      "availability": "available",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "aim:271470SIT",
+      "provider": "aim",
+      "sourceId": "271470SIT",
+      "sourceUrl": "https://www.aim-akademie.org/kurse/kurs/IT-erleben-statt-nur-verstehen-Ein-Besuch-im-ITEC-der-Schwarz-Digits/271470SIT",
+      "title": "IT erleben statt nur verstehen - Ein Besuch im IT Education Center der Schwarz Digits (ab 13 Jahre)",
+      "description": "Ein Besuch im IT Education Center der Schwarz Digits Komm mit ins ITEC der Schwarz Digits und tauche ein in die spannende und vielseitige Welt der Informationstechnologie (IT)! Unser interaktiver Workshop „IT erleben statt nur verstehen\" bietet Jugendlichen ab der 7. Klasse und ihren Eltern die Gelegenheit, die Grundlagen der IT praxisnah zu entdecken und zu erleben. Gemeinsam schaffen wir ein besseres Verständnis für IT-Prozesse. Was dich erwartet Teilnehmen Dieser Workshop richtet sich an Jugendliche ab der 7. Klasse sowie an Eltern, die ein besseres Verständnis für IT entwickeln und gemeinsam die Potenziale der digitalen Welt erkunden möchten.AdresseFerdinand-Braun-Straße 4/2, Bauteil A4/4 74074 Heilbronn",
+      "topics": [
+        "coding"
+      ],
+      "age": {
+        "min": 13,
+        "max": null
+      },
+      "schedule": [
+        {
+          "date": "2027-05-25",
+          "startTime": "09:00",
+          "endTime": "16:00",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Heilbronn, Schwarz Digits KG / ITEC"
+      },
+      "price": {
+        "type": "free",
+        "currency": "EUR"
+      },
+      "availability": "full",
+      "importedAt": "2026-11-13T22:41:29.265Z"
+    }
+  ]
+}

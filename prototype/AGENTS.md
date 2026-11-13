@@ -15,3 +15,4 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Animate separate cloud, grass, water, foreground, and Bobby layers with subtle stepped ambient motion. Do not move scene elements in response to pointer movement.
 - Show Bobby's smiling sprite while voice mode is active.
 - Provide a static reduced-motion state and prefer native browser animation over heavy runtime dependencies.
+- Import offers through provider-specific HTTP adapters into a validated `public/data/offers.json` catalogue. Use browser automation only when a provider cannot be read reliably through normal HTTP requests.

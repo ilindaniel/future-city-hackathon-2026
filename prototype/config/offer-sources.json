@@ -1,0 +1,44 @@
+{
+  "sources": [
+    {
+      "id": "aim-leisure",
+      "provider": "aim",
+      "enabled": true,
+      "url": "https://www.aim-akademie.org/kurse?kathaupt=18&suchesetzen=false&kfs_sonderrubrik=1264",
+      "defaultTopic": null
+    },
+    {
+      "id": "aim-digital-education",
+      "provider": "aim",
+      "enabled": true,
+      "url": "https://www.aim-akademie.org/kurse?kathaupt=18&suchesetzen=false&kfs_sonderrubrik=1277",
+      "defaultTopic": null
+    },
+    {
+      "id": "aim-junior-academy",
+      "provider": "aim",
+      "enabled": true,
+      "url": "https://www.aim-akademie.org/kurse/suche?clearallkatfilter=true&suchesetzen=true&kfs_stichwort_schlagwort=juniorakademie&kfs_sonderrubrik=-1&kfs_ort_select=-1&kfs_kennz=&kfs_veranartselect=-1&kfs_aussenst_select=-1&kfs_kursbereich=-1&kfs_veranartselect=-1&kfs_beginn_dat1=&kfs_beginn_dat2=",
+      "defaultTopic": null
+    },
+    {
+      "id": "aim-coding",
+      "provider": "aim",
+      "enabled": true,
+      "url": "https://www.aim-akademie.org/kurse?kathaupt=18&suchesetzen=false&kfs_kursbereich=1278&kfs_sonderrubrik=1277",
+      "defaultTopic": "coding"
+    },
+    {
+      "id": "experimenta-events",
+      "provider": "experimenta",
+      "enabled": true,
+      "url": "https://www.experimenta.science/besuchen/veranstaltungen/"
+    },
+    {
+      "id": "hdf-digital-family-workshop",
+      "provider": "hdf",
+      "enabled": true,
+      "url": "https://hdf-hn.de/kufer-api.php?keyword=digitale%20medien&keyword_relation=or&kategorie_id=0&page=1&limit=120&endpoint=kurse"
+    }
+  ]
+}
