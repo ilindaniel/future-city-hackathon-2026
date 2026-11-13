@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { filterUpcomingOffers, type Offer } from "../../ingestion/offers.ts";
+import { classifyOfferTopics, filterUpcomingOffers, type Offer } from "../../ingestion/offers.ts";
 
 const baseOffer: Offer = {
   schemaVersion: 1,
@@ -18,6 +18,13 @@ const baseOffer: Offer = {
   availability: "available",
   importedAt: "2026-11-13T20:00:00.000Z",
 };
+
+test("keeps AI, robotics, and making as separate topics", () => {
+  assert.deepEqual(classifyOfferTopics("Künstliche Intelligenz verstehen"), ["ai"]);
+  assert.deepEqual(classifyOfferTopics("Roboter programmieren"), ["robotics", "coding"]);
+  assert.deepEqual(classifyOfferTopics("First Lego League Explore"), ["robotics"]);
+  assert.deepEqual(classifyOfferTopics("Maker Faire und Solarmobilbauwettbewerb"), ["making"]);
+});
 
 test("removes past dates and keeps future dates on a recurring offer", () => {
   const offer: Offer = {

@@ -1,4 +1,4 @@
-export const OFFER_TOPICS = ["ai", "coding", "gaming"] as const;
+export const OFFER_TOPICS = ["ai", "robotics", "coding", "gaming", "making"] as const;
 export const OFFER_PROVIDERS = ["aim", "experimenta", "hdf", "ipai"] as const;
 export const OFFER_AVAILABILITIES = ["available", "waitlist", "full", "unknown"] as const;
 
@@ -59,7 +59,8 @@ export function classifyOfferTopics(value: string, defaultTopics: readonly Offer
   const normalizedValue = value.toLocaleLowerCase("de-DE");
   const topics = new Set<OfferTopic>();
 
-  if (/\bki\b|künstliche intelligenz|machine learning|chatgpt|robot/.test(normalizedValue)) topics.add("ai");
+  if (/\bki\b|künstliche intelligenz|machine learning|chatgpt/.test(normalizedValue)) topics.add("ai");
+  if (/robot|first lego league/.test(normalizedValue)) topics.add("robotics");
   if (
     /programm|coding|python|scratch|mikrocontroller|microcontroller|datenbank|webseite|\bweb-?app\b|(?:entwickel|programmier)\w*\s+(?:eine\s+)?app|\bcode\b/.test(
       normalizedValue,
@@ -68,6 +69,7 @@ export function classifyOfferTopics(value: string, defaultTopics: readonly Offer
     topics.add("coding");
   }
   if (/gaming|game design|spieleentwicklung|minecraft|roblox/.test(normalizedValue)) topics.add("gaming");
+  if (/maker faire|solarmobil/.test(normalizedValue)) topics.add("making");
   for (const defaultTopic of defaultTopics) topics.add(defaultTopic);
 
   return [...topics];
