@@ -1,75 +1,145 @@
-# New Recording 23 — Transcript
+# New Recording 23 - Transcript
 
-Source: `New Recording 23.m4a`  
-Duration: 24 minutes  
-Transcribed locally with Buzz 1.4.5, Faster Whisper Small.
+Source: `New Recording 23.m4a`
 
-Automatic transcript; names and wording have not been manually verified.
+Duration: approximately 24 minutes
 
----
+Merged from the repository transcript and the more complete speaker-attributed transcript.
 
-## AIM Academy Challenge Pitch
-
-**00:05:23**
-
-Good. Good. I am Kate Havan and my colleague Pia and I are representing IAM Academy today. We are really excited to be there and to tell you what our pitch is. Okay, at IAM we create innovative learning opportunities for children and teenagers outside school, but we are not the only ones at building samples and across Halbrough.
-
-**00:06:04**
-
-There are a lot of great leisure activities for children and teenagers, and all these activities spread across different websites. And the problem is that it's really hard for families to keep track of all these activities. Many families don't even know what is out there or which activities are right for their children. Many of these websites are not really designed
-
-**00:06:32**
-
-for children and teenagers, but for adults. And as a result, many young people never find what is right activities for them. But what if we could change that? But if we had one great learning guide that brings all these activities together, not just another event calendar or something new and creative, that parents
-
-**00:07:02**
-
-And especially teenagers and children really enjoy to use it and keep coming back to. And maybe also like institutions I am also can learn something new, maybe what is missing or what young people really need. So your challenge is build a learning guide or call you each whatever you like.
-
-**00:07:25**
-
-A place where every child and teenager can find something new, can discover new hobbies or some leisure activities that they really enjoy. Have you built it? It's completely up to you. Maybe you can start with institutes like IEM and Experimental, the Cosmos, Halbrunn, and focus only on two or three topics like game and coding. We are open to any ideas, so surprise us.
-
-**00:07:55**
-
-But more importantly, surprise young people in the city. If you'd like to know more, we are happy to tell you more later.
+Automatic transcript. It has been lightly cleaned for obvious transcription errors and readability, but names, speaker attribution, and uncertain wording have not been verified against the audio. The automatic speaker numbers are not stable: Speaker 5 is assigned to both Jonas and Stefan.
 
 ---
 
-## General Hackathon Logistics, Judging & Schedule
+## Urban Climate Sensor Placement
 
-**00:15:31**
+**Speaker 1 - Christian Mainzmann**
 
-Fantastic. So those are the six challenges from Ditchy Camping. On Sunday, there will be a pre-selection. So those people you just now heard will actually choose the best teams sent to the final pitch. And how does that work? It starts at Sunday at around 10 o'clock. And it's for you guys to make a good first impression.
+Hello. Our project is a cooperation between Heilbronn University, the Fraunhofer Institute, TUM Munich, and DHBW. Our project trains and qualifies small and medium-sized enterprises. My name is Christian Mainzmann, and I am also doing a PhD at Heilbronn University, where our first challenge comes from.
 
-**00:16:01**
+Our challenge is to determine where measurements are needed: how many locations need to be measured, where and when measurements should be made, and how often measurements are required to create an accurate heat map of a city. You can start with OpenStreetMap to get an overview of the city. The next step could be to use satellite data to create another overview and divide the city into different climate zones.
 
-So meet your challenge provider and showcase your sculpture. By that time, you should have at least like working worship. It doesn't need to be fully perfect. It's never fully perfect. It's anyway just three days. And be there in person. Best is probably on Saturday make up a slot. So make sure that you're here. Make up a slot with your challenge provider. And present it.
+The more difficult part is deciding where to place stationary sensors. We also have mobile robots and other mobile systems to which sensors can be added, allowing them to move and measure continuously. The result should be an accurate city heat map based on an optimized number and placement of sensors.
 
-**00:16:30**
+The challenge is to create an algorithm that identifies where measurements are needed, provides routes for mobile robots, and determines how many locations must be measured. You can use open-source satellite data as an input and optimize the number of stationary or mobile sensors. The result should include the optimized positions and routes, not only the map. We would also like to use this algorithm for different cities, rather than building it only for Heilbronn. As an extension, you could test how the algorithm works for humidity or noise, not only heat. Thank you very much.
 
-you have more than 5 minutes or 10 minutes or whatever to make a very good first impression. So you start. You can actually have until 2 o'clock, you can still fix last bugs from your solution, you can reverse your final pitch, but at 1 o'clock sharp we expect you to deliver your final results. At 1 o'clock,
+---
 
-**00:17:01**
+## PreZero Waste Collection Route Optimization
 
-the channel provider, where the provider hopefully would have met you. He will actually get all kind of information you provide. And from that kind of information, he or she will provide the best solution or select the best solution. What they will actually look at, and that's probably for you good to know in the months, what will they actually look at? They will look at the ideal you have. So what's the problem in that search? How original is the idea?
+**Speaker 2 - Marcel Fortuna**
 
-**00:17:31**
+Hi there. My name is Marcel Fortuna. I am from PreZero. By the way, all those bottles are on me because I really want to do something for recycling. There is a water dispenser with sparkling water, so fill them up. Keep the bottle afterward and continue to use it.
 
-And is it feasible? And can it be implemented in future? And they will also have a look at the implementation, whether or not it works. It's reliable. They will also look at the teamwork and everybody contributes to it. They will also look at your documentation. You provide the choice of technologies. So it's a huge set up. They will actually prepare. On Sunday at 2 o'clock, the final pictures will then start.
+Now to our challenge. A city always wants to prevent overfilled containers and waste bins, but this is a difficult problem. Some bins are overfilled while others are almost empty. When I go jogging on Sunday morning, I sometimes see city employees remove only one item from one bin while another bin is overfilled. How can we optimize that collection route?
 
-**00:18:05**
+We now have a way to measure the fill level, but once we have that data, what can we do with it? This is where you come in, and we want your ideas. How can we use fill-level data to optimize routes? How can we find patterns that tell us whether a bin should be emptied daily, weekly, every two weeks, or at another interval? The data should form the basis for optimal route planning.
 
-You bought, I won't tell you before the one, so be there all in person. And then once your team is actually called up, come and present. And the reason we are actually very short in time on Sunday, so please, did I mention to do the technical checkup before? So please do the technical checkup before. Because that is always, it's always a nightmare. And in case you don't make it, it doesn't make it. We will still have your presentation as a backup.
+As Christian said, we do not want to solve this only for one specific use case. We want to make it general, and there are many variables to consider. That is our challenge. I am looking forward to working with creative technical teams. I will be at the PreZero table to provide more information. Thank you, and now it is time for the third challenge.
 
-**00:18:32**
+---
 
-No life thing or something you can still present something, but we won't have time 10 minutes to fix your box Okay, and it will be a five minute pitch shock and The jury will ask you will have three minutes time to ask you questions start at two and what the jury will actually look at it is about 50% the idea of the implementation 30% pitch and storytelling, you know, it is important to tell your
+## aim Learning Guide
 
-**00:19:03**
+**Speaker 3 - Kate Herbrand**
 
-sorry, in a good way, and 20% of future visions, so to which degree can it be employed, the talent provider, et cetera. So keep these categories in mind when you prepare and rehearse your pitch.
+Hi, everyone. I am Kate Herbrand, and my colleague Pia and I are representing aim today. We are really excited to be here and to tell you about our pitch. At aim, we create innovative learning opportunities for children and teenagers outside school, but we are not the only ones.
 
-**00:22:11**
+At Bildungscampus and across Heilbronn, there are many great leisure activities for children and teenagers, and these activities are spread across different websites. The problem is that it is difficult for families to keep track of them. Many families do not even know what is available or which activities are right for their children.
 
-And the third thing is, they all provide a readme file. This time, I strongly encourage you to read the readme file, because it gets far more information about the challenge, about the background, it explains the data in a better way. It gives you some instruction what it is. Maybe it gives you also some first idea as a starting point.
+Many of these websites are designed for adults rather than children and teenagers. As a result, many young people never find the activities that are right for them. But what if we could change that? What if we had one great learning guide that brings all these activities together?
+
+It should not be just another event calendar. It should be something new and creative that parents, teenagers, and children enjoy using and keep coming back to. Institutions such as aim could also learn something new, such as what is missing or what young people really need. Your challenge is to build a learning guide, or call it whatever you like.
+
+It should be a place where every child and teenager can find something new and discover hobbies or leisure activities they enjoy. How you build it is completely up to you. You could start with institutions such as aim and experimenta in COSMOS HN and focus on only two or three topics, such as gaming and coding. We are open to any ideas, so surprise us.
+
+More importantly, surprise the young people in the city. If you would like to know more, we will be happy to tell you more later.
+
+---
+
+## Schwarz Digits Pedestrian Data Tooling
+
+**Speaker 4 - Jonathan**
+
+Thank you. As you can see, we are from Schwarz Digits. My name is Jonathan.
+
+**Speaker 5 - Jonas**
+
+I am Jonas. Welcome, everyone, to the challenge.
+
+**Speaker 4 - Jonathan**
+
+He is my click helper today, but he will help you not only click, but also type and implement things during the next three days. I will also help. As mentioned, we are from Schwarz Digits. We are the digital brain behind Lidl, Kaufland, PreZero, Schwarz Produktion, and other companies. We build products such as STACKIT and email services for Schwarz Group. We do all kinds of IT work.
+
+Two years ago, at this event, we built sensors and deployed them in central Heilbronn. We brought the resulting data for you to use in our challenge. The challenge is to create tooling that helps us optimize advertising, identify where new Lidl stores could open, and optimize staffing. At 22:00, for example, almost nobody may be around, and the data could show that.
+
+Your task is to interpret the data and build tooling that tells us how many people are in a certain area. Be creative. You could even answer unusual questions such as where someone could party tonight without being interrupted because nobody else is around.
+
+We have a special requirement because we provide STACKIT and want you to use it to host your application or whatever you build. We will provide access. We would also like you to use our Onyx design framework. You can find both online. I added the QR code only on my laptop, which was not very helpful, but we will provide one. You can scan it to get access to STACKIT and deploy your work there.
+
+We will help because it is not easy at the beginning. Once you get used to it, you can deploy databases, applications, and other services. You will have a domain where your application can be reached. Come to our table and ask us. Both of us will be here to help for the whole weekend. The next challenge is...
+
+---
+
+## City of Heilbronn Urban Cable Car Communication
+
+**Speaker 6 - Thomas**
+
+Hi, everybody. My name is Thomas. I did not have pitch training before. I am an employee of the City of Heilbronn, and you saw my boss on stage at the beginning. I represent the coordination team for the urban cable car infrastructure project.
+
+**Speaker 7**
+
+Mm-hmm.
+
+**Speaker 6 - Thomas**
+
+Why is the city planning an urban cable car? As you may know, we have several large urban development areas in Heilbronn, including Bildungscampus, IPAI, Zukunftspark Wohlgelegen, and others. The city was asked to determine how these areas could be connected to the public transport system. We conducted feasibility studies for different options, and the result was that a cable car might be the most efficient way to link these areas.
+
+One of the biggest tasks in this project is public communication. Nobody has done something like this in Germany before, so there are no role models for us. The whole project is new, and new things often provoke people and cause anxiety, curiosity, or pride.
+
+We ask you to develop a tool that analyzes communication on social media and helps us optimize our communication strategy. Whether you win the prize on Sunday or not, I can assure you that I will personally take your results to the relevant city departments and the mayor, discuss them, and use them for our communication strategy. This is your opportunity to become a concrete part of this infrastructure project. Thank you.
+
+---
+
+## Utility Gateway Placement
+
+**Speaker 5 - Stefan**
+
+Hello, everybody. I am the last person in this round. My name is Stefan, and I am from the local utility company. I also did not have pitch training before.
+
+We are looking for a tool because we are installing many gateways in the city and need to determine where they can receive the correct meter signals. We have already installed gateways and smart meters for water and other utilities. Our challenge is to find the best places for gateways. We want to create a plan for the gateways and meters and connect them. I think we can talk later at the table, where I can answer your questions.
+
+---
+
+## Hackathon Logistics, Judging, and Schedule
+
+**Speaker 8 - Organizer**
+
+Fantastic. Those are the six challenges from which you can choose. On Sunday, there will be a preselection. The people you just heard will select the best teams to continue to the final pitch. It starts on Sunday at around 10:00, and this is your opportunity to make a good first impression.
+
+Meet your challenge provider and demonstrate your solution. By that time, you should have at least a working version. It does not need to be perfect. Nothing is ever perfect, and you have only three days. Be there in person. It is probably best to arrange a time slot with your challenge provider on Saturday. Make sure you are here and present your work.
+
+You will have more than five or ten minutes to make a good first impression, so use that opportunity. You can continue fixing the last bugs in your solution and rehearse your final pitch until 13:00, but at 13:00 sharp, we expect you to submit your final results.
+
+By 13:00, the challenge providers should have met you and will receive all the information you submit. Based on that information, each challenge provider will select the best solution. It is useful for you to know what they will assess. They will look at your idea: What problem does it solve, what is the benefit, how original is it, is it feasible, and can it be implemented in the future?
+
+They will also assess the implementation, including whether it works and is reliable. They will look at teamwork and whether everyone contributes. They will also review your documentation and choice of technologies. It is a broad set of criteria. At 14:00 on Sunday, the final pitches will begin.
+
+We will not tell you beforehand who won, so everyone must be there in person. When your team is called, come up and present. We are short on time on Sunday, so complete the technical check beforehand. Technical setup is always difficult. If your live demo does not work, we will still have your presentation as a backup.
+
+You can still present without a live demo, but we will not have ten minutes to fix bugs. The pitch will be exactly five minutes, followed by three minutes of jury questions. The final starts at 14:00. The jury criteria are approximately 50% idea and implementation, 30% pitch and storytelling, and 20% future vision.
+
+It is important to tell your story well. Future vision considers the degree to which the solution can be used by the challenge provider and developed further. Keep these categories in mind when you prepare and rehearse your pitch.
+
+We will have three winners. First place will receive EUR 1,000, second place EUR 600, and third place EUR 400. Winning is nice, but you are also here to have fun, learn something new, meet new people, and enjoy excellent food. I am happy for everyone who wins, and I hope everyone else enjoys the weekend too.
+
+You now have enough time to find your teams. Do not have more than six people in a team. Smaller teams are preferred because large groups often do not work well. Six is the maximum, and fewer is fine. Register your team tomorrow at 14:00 using the provided link. The presentation will run all weekend, so you can get the QR code later. Give your team a name, state which challenge you selected, and list all team members.
+
+For those who need Wi-Fi, which I assume is everybody, we have set up a hackathon network. The password is shown in the presentation. Join our Signal channel to receive important information, such as when dinner is ready or any memes Marcel sends. If it gets on your nerves, you can mute it.
+
+All challenges and data are available through the provided link. It includes the two slides you just saw and, in some cases, data. For example, the city provides social media data, so you do not need to collect it yourself. The utility gateway challenge provides real-world data about gateways and connectivity. Use these datasets as a starting point. You can always enrich them.
+
+Each challenge also provides a README file. I know nobody likes to read README files because they often do not contain anything useful. This time, I strongly encourage you to read them. They provide more information about the challenge and its background, explain the data, describe what is expected, and may give you an initial idea. In the end, it is your work, and you can do whatever you like, but the README is a very good starting point. Do something new: read the README file.
+
+We are so fast today. Is that not amazing? When does the pizza start? At 18:30. We will provide pizza, as we do every year, and you can eat it wherever you like.
+
+You can start now and look around. All the challenge providers will be at the designated tables, so leave some space for them. A card on a table shows where the respective challenge provider will wait for you. Review the challenges, speak with the challenge providers, and find the challenge and team you like. Thanks. I will keep the most important link open for you. It is where you can get [recording ends].
