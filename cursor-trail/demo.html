@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cursor trail demo</title>
+    <link rel="stylesheet" href="cursor-trail.css" />
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        font: 600 1.5rem/1.3 system-ui, sans-serif;
+      }
+      section {
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+        text-align: center;
+      }
+      .light { background: #f3f1ff; color: #111; }
+      .dark { background: #16161a; color: #f3f1ff; }
+    </style>
+  </head>
+  <body>
+    <section class="light">Move the mouse. Click for a burst.</section>
+    <section class="dark">The trail inverts the colour under it.</section>
+    <script type="module">
+      import { initCursorTrail } from "./cursor-trail.js";
+      initCursorTrail();
+    </script>
+  </body>
+</html>

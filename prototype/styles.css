@@ -1,0 +1,781 @@
+/*
+ * Bobby components. Every value comes from tokens.css; see DESIGN.md for the
+ * rules behind each component.
+ */
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--surface);
+  color: var(--ink);
+  font: 400 var(--text-body) / 1.5 var(--font-body);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.pixel-art {
+  image-rendering: pixelated;
+}
+
+/* ---------- Scene: the pixel world behind child screens ---------- */
+
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: var(--layer-scene);
+  background: var(--sky) url("assets/scene.jpg") var(--scene-focus) / var(--scene-size) no-repeat;
+  image-rendering: pixelated;
+}
+
+body[data-world="calm"] .scene {
+  display: none;
+}
+
+/* ---------- Screens ---------- */
+
+.screen {
+  position: relative;
+  z-index: var(--layer-app);
+  width: 100%;
+  max-width: var(--column);
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.screen--wide {
+  max-width: var(--wide);
+}
+
+/* ---------- Glass (DESIGN.md, section 6) ---------- */
+
+.glass {
+  position: relative;
+  background: var(--glass-solid);
+  clip-path: var(--corner);
+  box-shadow:
+    inset 0 2px 0 var(--glass-line),
+    inset 0 calc(var(--px) * -1) 0 var(--glass-edge);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .glass {
+    background: var(--glass);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+  }
+}
+
+.glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--grain);
+  opacity: var(--grain-strength);
+  pointer-events: none;
+}
+
+.glass > * {
+  position: relative; /* keep content above the grain */
+  z-index: 1;
+}
+
+/* A panel on the calm parent background: no blur, a line instead. */
+.panel {
+  background: var(--surface-raised);
+  clip-path: var(--corner);
+  box-shadow:
+    inset 0 0 0 2px var(--line),
+    inset 0 calc(var(--px) * -1) 0 var(--line);
+}
+
+/* ---------- Top bar ---------- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.topbar__actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.wordmark {
+  padding: var(--space-2) var(--space-4);
+  font: 700 var(--text-heading) / 1 var(--font-display);
+}
+
+/* ---------- Pressable things (section 7) ---------- */
+
+.button,
+.choice,
+.chip,
+.icon-button,
+.heart {
+  border: 0;
+  transition:
+    transform var(--time-fast) var(--ease-out),
+    box-shadow var(--time-fast) var(--ease-out);
+}
+
+.button {
+  --fill: var(--action);
+  --edge-color: var(--action-edge);
+  --text: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: var(--tap-kid);
+  padding: var(--space-3) var(--space-5) calc(var(--space-3) + var(--edge));
+  background: var(--fill);
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  clip-path: var(--corner);
+  box-shadow: inset 0 calc(var(--edge) * -1) 0 var(--edge-color);
+}
+
+.button--block {
+  width: 100%;
+}
+
+.button--bobby {
+  --fill: var(--bobby);
+  --edge-color: var(--bobby-edge);
+  --text: var(--on-dark);
+}
+
+.button--quiet {
+  --fill: var(--cream);
+  --edge-color: var(--cream-edge);
+  min-height: var(--tap);
+  font-weight: 500;
+}
+
+.button--small {
+  min-height: var(--tap);
+  padding-inline: var(--space-4);
+  font-size: var(--text-small);
+}
+
+@media (hover: hover) {
+  .button:hover,
+  .choice:hover,
+  .chip:hover,
+  .icon-button:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.button:active,
+.choice:active,
+.icon-button:active {
+  transform: translateY(var(--px));
+  box-shadow: inset 0 calc(var(--edge-pressed) * -1) 0 var(--edge-color, var(--glass-edge));
+}
+
+.button:focus-visible,
+.choice:focus-visible,
+.chip:focus-visible,
+.icon-button:focus-visible,
+.heart:focus-visible,
+.field__input:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+.icon-button {
+  display: grid;
+  place-items: center;
+  min-width: var(--tap);
+  min-height: var(--tap);
+  padding: 0 var(--space-3);
+  background: var(--glass-solid);
+  font-weight: 600;
+  font-size: var(--text-small);
+  clip-path: var(--corner-small);
+  box-shadow: inset 0 calc(var(--px) * -1) 0 var(--glass-edge);
+}
+
+/* ---------- Pixel icons ---------- */
+
+.icon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  shape-rendering: crispEdges;
+}
+
+.icon--small {
+  width: 24px;
+  height: 24px;
+}
+
+.icon--large {
+  width: 96px;
+  height: 96px;
+}
+
+/* ---------- Entry screen ---------- */
+
+.entry {
+  justify-content: center;
+}
+
+.entry__panel {
+  padding: var(--space-5) var(--space-4);
+  display: grid;
+  gap: var(--space-5);
+  text-align: center;
+}
+
+.title {
+  font: 700 var(--text-title) / 1.1 var(--font-display);
+}
+
+.roles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.role {
+  min-width: 0;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--surface-raised);
+  clip-path: var(--corner);
+}
+
+.role__picture {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  min-height: 0;
+  overflow: hidden;
+  clip-path: var(--corner);
+}
+
+.role__picture--kid {
+  background: var(--sky);
+}
+
+.role__picture--adult {
+  background: var(--cream);
+}
+
+.role__picture img {
+  width: 54%; /* the duck is taller than wide; this keeps it inside the square */
+  height: auto;
+}
+
+.role .button {
+  padding-inline: var(--space-2);
+  font-size: var(--text-small);
+  line-height: 1.2;
+}
+
+/* ---------- Child screen ---------- */
+
+.kid {
+  min-height: 100dvh; /* Bobby and the button under it sit at the bottom edge */
+}
+
+.bubble {
+  padding: var(--space-4);
+  display: grid;
+  gap: var(--space-2);
+  justify-items: center;
+  text-align: center;
+}
+
+.bubble .tag {
+  justify-self: center;
+}
+
+.bubble__text {
+  font-size: var(--text-speech);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* The tail is its own element: stepped corners would cut it off the bubble. */
+.bubble__tail {
+  display: grid;
+  justify-items: center;
+  margin-top: calc(var(--space-4) * -1);
+}
+
+.bubble__tail::before,
+.bubble__tail::after {
+  content: "";
+  display: block;
+  background: var(--glass-solid);
+}
+
+.bubble__tail::before {
+  width: calc(var(--px) * 4);
+  height: var(--px);
+}
+
+.bubble__tail::after {
+  width: calc(var(--px) * 2);
+  height: var(--px);
+}
+
+.stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  min-height: var(--bobby-height);
+}
+
+/* Bobby is a duck on the near bank: clearly smaller than the buildings behind. */
+.bobby {
+  height: var(--bobby-height);
+  width: auto;
+}
+
+.bobby-button {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.bobby-button:focus-visible {
+  outline: var(--px) solid var(--ink);
+  outline-offset: var(--px);
+}
+
+/* Shown while Bobby is asleep: sound is off until the first tap. */
+.sleep-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  font: 700 var(--text-body) / 1.4 var(--font-display);
+  clip-path: var(--corner-small);
+  animation: sleep-bob 1600ms var(--ease-pixel) infinite alternate;
+}
+
+@keyframes sleep-bob {
+  to {
+    transform: translateY(calc(var(--px) * -2));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sleep-badge {
+    animation: none;
+  }
+}
+
+.mic__icons {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background: var(--cream);
+  font-size: var(--text-small);
+  font-weight: 500;
+  line-height: 1.4;
+  justify-self: start;
+  clip-path: var(--corner-small);
+}
+
+.tag--ai {
+  background: var(--ink);
+  color: var(--on-dark);
+}
+
+/* Microphone: four states, each with its own picture, colour and text. */
+.mic[data-state="listening"] {
+  --fill: var(--bobby);
+  --edge-color: var(--bobby-edge);
+  --text: var(--on-dark);
+}
+
+.mic[data-state="thinking"],
+.mic[data-state="speaking"] {
+  --fill: var(--surface-raised);
+  --edge-color: var(--line);
+}
+
+.mic__bars {
+  display: none;
+  align-items: flex-end;
+  gap: var(--px);
+  height: 24px;
+}
+
+.mic__bars i {
+  display: block;
+  width: calc(var(--px) * 1.5);
+  height: 100%;
+  background: currentColor;
+  transform-origin: bottom;
+  animation: mic-step 600ms var(--ease-pixel) infinite alternate;
+}
+
+.mic__bars i:nth-child(2) {
+  animation-delay: -200ms;
+}
+
+.mic__bars i:nth-child(3) {
+  animation-delay: -400ms;
+}
+
+.mic[data-state="listening"] .mic__bars,
+.mic[data-state="thinking"] .mic__bars {
+  display: flex;
+}
+
+.mic[data-state="listening"] .mic__icons,
+.mic[data-state="thinking"] .mic__icons {
+  display: none;
+}
+
+.mic[data-state="thinking"] .mic__bars i {
+  height: calc(var(--px) * 1.5);
+  align-self: center;
+  animation-name: mic-dot;
+}
+
+@keyframes mic-step {
+  from { transform: scaleY(0.25); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes mic-dot {
+  from { opacity: 0.25; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mic__bars i {
+    animation: none;
+  }
+}
+
+/* Four picture choices */
+.choices {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+}
+
+.choice {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: var(--space-1);
+  min-height: var(--tap-kid);
+  padding: var(--space-2) var(--space-1) calc(var(--space-2) + var(--px));
+  font-size: var(--text-small);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* ---------- Event cards ---------- */
+
+.events {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin-inline: calc(var(--space-4) * -1);
+  padding-inline: var(--space-4);
+  scrollbar-width: none;
+}
+
+.events::-webkit-scrollbar {
+  display: none;
+}
+
+.event {
+  flex: 0 0 86%;
+  scroll-snap-align: center;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+}
+
+.event__picture {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  clip-path: var(--corner-small);
+}
+
+.event__title {
+  font-size: var(--text-body);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.event__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+.heart {
+  display: grid;
+  place-items: center;
+  width: var(--tap-kid);
+  height: var(--tap-kid);
+  background: var(--surface-raised);
+  clip-path: var(--corner-small);
+}
+
+.heart .icon {
+  width: 36px;
+  height: 36px;
+}
+
+.heart[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 var(--px) var(--like);
+}
+
+/* Parent version of the card */
+.event--parent {
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  padding: var(--space-4);
+}
+
+.event--parent .event__facts {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: var(--space-1);
+  color: var(--ink-muted);
+  font-size: var(--text-small);
+}
+
+.event--parent .button {
+  grid-column: 1 / -1;
+}
+
+/* ---------- Parent area ---------- */
+
+.section {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.heading {
+  font: 600 var(--text-heading) / 1.2 var(--font-body);
+}
+
+.muted {
+  color: var(--ink-muted);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.invite {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.field {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.field__label {
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+
+.field__input {
+  min-height: var(--tap);
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  background: var(--surface-raised);
+  clip-path: var(--corner-small);
+  box-shadow: inset 0 0 0 2px var(--line);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  min-height: var(--tap);
+  padding: var(--space-2) var(--space-4);
+  background: var(--surface-raised);
+  font-weight: 500;
+  clip-path: var(--corner-small);
+  box-shadow: inset 0 0 0 2px var(--line);
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--bobby);
+  color: var(--on-dark);
+  box-shadow: none;
+}
+
+.chip[aria-pressed="true"]::before {
+  content: "✓ ";
+}
+
+.notice {
+  padding: var(--space-4);
+  color: var(--ink-muted);
+}
+
+/* ---------- Sheet ---------- */
+
+.sheet {
+  width: min(100% - var(--space-6), var(--column));
+  padding: var(--space-5);
+  border: 0;
+  background: var(--surface-raised);
+  color: var(--ink);
+  clip-path: var(--corner);
+  text-align: center;
+}
+
+.sheet::backdrop {
+  background: var(--scrim);
+}
+
+.sheet[open] {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: center;
+  animation: sheet-in var(--time-slow) var(--ease-out);
+}
+
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-5));
+  }
+}
+
+.qr {
+  width: 168px;
+  height: 168px;
+  padding: var(--space-3);
+  background: var(--on-dark);
+  box-shadow: inset 0 0 0 2px var(--line);
+}
+
+.qr svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  shape-rendering: crispEdges;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-height: 640px) {
+  .bubble {
+    padding: var(--space-3);
+  }
+
+  .bubble__text {
+    font-size: var(--text-body);
+  }
+}
+
+@media (max-width: 359px) {
+  .roles {
+    grid-template-columns: 1fr;
+  }
+
+  .event {
+    flex-basis: 94%;
+  }
+}

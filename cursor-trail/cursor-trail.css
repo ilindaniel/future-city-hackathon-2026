@@ -1,0 +1,47 @@
+/*
+ * Canvas for the pixel cursor trail (see cursor-trail.js).
+ *
+ * Tokens:
+ *   --cursor-trail-color     fill colour of the squares
+ *   --cursor-trail-opacity   1 is solid; 0.8 lets 20% of the page show through
+ *   --cursor-trail-blend     how the squares mix with the page below them
+ *   --cursor-trail-layer     stacking order; must sit above all page content
+ *
+ * The squares are white, slightly see-through and grainy, like small chips of
+ * frosted glass. The grain itself is drawn in cursor-trail.js (option "grain").
+ */
+:root {
+  --cursor-trail-color: #ffffff;
+  --cursor-trail-opacity: 0.8;
+  --cursor-trail-blend: normal;
+  --cursor-trail-layer: 99999;
+}
+
+.cursor-trail {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: var(--cursor-trail-layer);
+  opacity: var(--cursor-trail-opacity);
+  mix-blend-mode: var(--cursor-trail-blend);
+}
+
+/*
+ * Set by cursor-trail.js while the trail runs. The system cursor is hidden
+ * everywhere; the newest trail square stays lit under a resting pointer.
+ */
+.has-cursor-trail,
+.has-cursor-trail * {
+  cursor: none !important;
+}
+
+/*
+ * A modal dialog is shown above everything, the trail canvas included, so the
+ * trail would be hidden behind it. Give the system cursor back there.
+ */
+.has-cursor-trail :modal,
+.has-cursor-trail :modal * {
+  cursor: auto !important;
+}

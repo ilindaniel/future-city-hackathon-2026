@@ -1,0 +1,113 @@
+/*
+ * Bobby design tokens. The meaning of every token is described in DESIGN.md.
+ * Components must use these variables and never repeat the raw values.
+ */
+:root {
+  /* Colour (DESIGN.md, section 3) */
+  --ink: #201010;
+  --ink-muted: #5b4a44;
+  --on-dark: #ffffff;
+  --action: #f08000;
+  --action-edge: #b05800;
+  --bobby: #208040;
+  --bobby-edge: #105040;
+  --like: #e84f7a;
+  --sky: #3eadfd;
+  --water: #39acdc;
+  --grass: #6eaa38;
+  --cream: #f0e0b0;
+  --cream-edge: #d4c088;
+  --surface: #f7f2e6;
+  --surface-raised: #fffdf8;
+  --line: #e2d8c4;
+  --glass: rgb(255 253 248 / 0.82);
+  --glass-solid: rgb(255 253 248 / 0.96);
+  --glass-edge: rgb(32 16 16 / 0.14);
+  --glass-line: rgb(255 255 255 / 0.9);
+  --scrim: rgb(32 16 16 / 0.5);
+
+  /* Type (section 4) */
+  --font-display: "Pixelify Sans", "Lexend", system-ui, sans-serif;
+  --font-body: "Lexend", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --text-title: 1.875rem;
+  --text-heading: 1.375rem;
+  --text-speech: 1.1875rem;
+  --text-body: 1.0625rem;
+  --text-small: 0.875rem;
+
+  /* Space, size and shape (section 5) */
+  --px: 4px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --tap: 48px;
+  --tap-kid: 64px;
+  --column: 420px;
+  --bobby-height: min(24dvh, 200px); /* Bobby on screen; see DESIGN.md, section 9 */
+  --wide: 1040px;
+  --edge: 6px;
+  --edge-pressed: 2px;
+
+  /* Stepped corners: two steps of --px, and one step for small controls. */
+  --corner: polygon(
+    0 calc(var(--px) * 2), var(--px) calc(var(--px) * 2), var(--px) var(--px),
+    calc(var(--px) * 2) var(--px), calc(var(--px) * 2) 0,
+    calc(100% - var(--px) * 2) 0, calc(100% - var(--px) * 2) var(--px),
+    calc(100% - var(--px)) var(--px), calc(100% - var(--px)) calc(var(--px) * 2),
+    100% calc(var(--px) * 2),
+    100% calc(100% - var(--px) * 2), calc(100% - var(--px)) calc(100% - var(--px) * 2),
+    calc(100% - var(--px)) calc(100% - var(--px)),
+    calc(100% - var(--px) * 2) calc(100% - var(--px)), calc(100% - var(--px) * 2) 100%,
+    calc(var(--px) * 2) 100%, calc(var(--px) * 2) calc(100% - var(--px)),
+    var(--px) calc(100% - var(--px)), var(--px) calc(100% - var(--px) * 2),
+    0 calc(100% - var(--px) * 2)
+  );
+  --corner-small: polygon(
+    0 var(--px), var(--px) var(--px), var(--px) 0,
+    calc(100% - var(--px)) 0, calc(100% - var(--px)) var(--px), 100% var(--px),
+    100% calc(100% - var(--px)), calc(100% - var(--px)) calc(100% - var(--px)),
+    calc(100% - var(--px)) 100%,
+    var(--px) 100%, var(--px) calc(100% - var(--px)), 0 calc(100% - var(--px))
+  );
+
+  /* Glass (section 6) */
+  --glass-blur: 18px;
+  --grain-strength: 0.1;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  /* Focus ring, drawn inside the box because stepped corners clip the outside */
+  --focus: inset 0 0 0 4px var(--ink), inset 0 0 0 6px var(--on-dark);
+
+  /* Motion (section 8) */
+  --time-fast: 120ms;
+  --time-base: 220ms;
+  --time-slow: 400ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-pixel: steps(4, end);
+
+  /* Layers */
+  --layer-scene: 0;
+  --layer-app: 1;
+  --layer-sheet: 10;
+
+  /*
+   * The scene is pinned to the bottom of the screen and drawn 25% taller than
+   * the screen, so the grass fills roughly the lower 40% and Bobby always
+   * stands on it. The second value keeps wide screens covered.
+   */
+  --scene-focus: 58% 100%;
+  --scene-size: auto max(125dvh, 56.25vw);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --time-fast: 0ms;
+    --time-base: 0ms;
+    --time-slow: 0ms;
+  }
+}
