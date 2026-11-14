@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.ingestion.json",
-    "build": "vite build && node scripts/prepare-sites-build.mjs",
-    "start": "serve --single --listen $PORT dist/client",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.ingestion.json && tsc --noEmit -p tsconfig.server.json",
+    "build": "vite build && node scripts/prepare-sites-build.mjs && tsc -p tsconfig.server.json",
+    "start": "node dist/railway/railway.js",
     "import:offers": "node ingestion/import-offers.ts",
     "preview": "vite preview",
     "test:offers": "node --test tests/offers/*.test.ts",
+    "test:server": "node --test tests/server/*.test.ts",
     "test:voice": "node --test tests/voice/*.test.ts",
     "test:sites": "node --test tests/sites-worker.test.mjs"
   },
@@ -22,14 +23,15 @@
     "loading-dev": "^0.3.8",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "serve": "^14.2.8",
+    "serve-handler": "^6.1.8",
     "swr": "^2.5.1",
-    "vite": "6.4.2"
+    "vite": "6.4.6"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "@types/serve-handler": "^6.1.4",
     "typescript": "^7.0.2"
   }
 }

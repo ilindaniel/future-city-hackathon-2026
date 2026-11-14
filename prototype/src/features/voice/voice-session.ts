@@ -13,7 +13,8 @@ function isSignedUrl(value: string) {
 }
 
 export async function getVoiceSessionOptions(): Promise<VoiceSessionOptions> {
-  const sessionUrl = import.meta.env.VITE_ELEVENLABS_SESSION_URL?.trim();
+  const configuredSessionUrl = import.meta.env.VITE_ELEVENLABS_SESSION_URL?.trim();
+  const sessionUrl = configuredSessionUrl || (import.meta.env.PROD ? "/api/voice/session" : "");
 
   if (sessionUrl) {
     const response = await fetch(sessionUrl, {
