@@ -1047,7 +1047,6 @@ h1,
 .parent-screen .offer-link {
   height: 100%;
   padding-right: 16px;
-  grid-template-columns: 48px minmax(0, 1fr);
 }
 
 .parent-screen .offer-results-header h1 {
