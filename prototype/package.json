@@ -10,14 +10,18 @@
     "import:offers": "node ingestion/import-offers.ts",
     "preview": "vite preview",
     "test:offers": "node --test tests/offers/*.test.ts",
+    "test:voice": "node --test tests/voice/*.test.ts",
     "test:sites": "node --test tests/sites-worker.test.mjs"
   },
   "dependencies": {
+    "@elevenlabs/client": "^1.36.1",
     "@phosphor-icons/react": "^2.1.10",
     "@vitejs/plugin-react": "5.0.4",
     "cheerio": "^1.2.0",
+    "loading-dev": "^0.3.8",
     "react": "19.2.0",
     "react-dom": "19.2.0",
+    "swr": "^2.5.1",
     "vite": "6.4.2"
   },
   "devDependencies": {

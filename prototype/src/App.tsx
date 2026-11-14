@@ -1,17 +1,19 @@
 import {
+  BrainIcon,
   CheckCircleIcon,
+  CodeIcon,
   GameControllerIcon,
-  MicrophoneIcon,
   PuzzlePieceIcon,
   RobotIcon,
-  SpeakerHighIcon,
   StackIcon,
-  WaveformIcon,
 } from "@phosphor-icons/react";
 import type { Icon } from "@phosphor-icons/react";
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
+import { OfferResults } from "./features/offers/OfferResults";
+import { type Offer, useOffers } from "./features/offers/use-offers";
+import { VoiceAnswerButton } from "./features/voice/VoiceAnswerButton";
 
-type InterestId = "robots" | "games" | "building" | "puzzles";
+export type InterestId = "ai" | "coding" | "games" | "robots" | "building" | "puzzles";
 
 type Interest = {
   id: InterestId;
@@ -26,8 +28,10 @@ type UmamiWindow = Window & {
 };
 
 const INTERESTS: Interest[] = [
-  { id: "robots", label: "Roboter", icon: RobotIcon },
+  { id: "ai", label: "KI", icon: BrainIcon },
+  { id: "coding", label: "Programmieren", icon: CodeIcon },
   { id: "games", label: "Spiele", icon: GameControllerIcon },
+  { id: "robots", label: "Roboter", icon: RobotIcon },
   { id: "building", label: "Bauen", icon: StackIcon },
   { id: "puzzles", label: "Rätseln", icon: PuzzlePieceIcon },
 ];
@@ -40,50 +44,51 @@ function trackEvent(eventName: string, data?: Record<string, string>) {
 
 export function App() {
   const [selectedInterest, setSelectedInterest] = useState<InterestId | null>(null);
-  const [isListening, setIsListening] = useState(false);
-  const [statusMessage, setStatusMessage] = useState("Wähle ein Bild oder antworte mit deiner Stimme.");
-
-  useEffect(() => {
-    return () => {
-      window.speechSynthesis?.cancel();
-    };
-  }, []);
+  const [visibleOffers, setVisibleOffers] = useState<InterestId | "all" | "voice" | null>(null);
+  const [voiceOfferIds, setVoiceOfferIds] = useState<string[]>([]);
+  const [isVoiceActive, setIsVoiceActive] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("Wähle ein Thema. Sprich oder tippe deine Antwort.");
+  const { data: offerCatalog } = useOffers();
 
   const handleInterestSelect = (interest: Interest) => {
     setSelectedInterest(interest.id);
-    setIsListening(false);
-    setStatusMessage(`${interest.label} ausgewählt.`);
+    setVisibleOffers(interest.id);
+    setStatusMessage(`${interest.label}: Hier sind passende Angebote.`);
     trackEvent("child_interest_selected", { interest: interest.id });
-  };
-
-  const handleListenToggle = () => {
-    setIsListening((currentValue) => {
-      const nextValue = !currentValue;
-      setStatusMessage(nextValue ? "Ich höre zu. Sprich jetzt." : "Sprachantwort beendet.");
-      trackEvent(nextValue ? "voice_answer_started" : "voice_answer_stopped");
-      return nextValue;
-    });
-  };
-
-  const handleQuestionReplay = () => {
-    if (!("speechSynthesis" in window)) {
-      setStatusMessage("Die Sprachausgabe ist in diesem Browser nicht verfügbar.");
-      return;
-    }
-
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(QUESTION);
-    utterance.lang = "de-DE";
-    utterance.rate = 0.9;
-    window.speechSynthesis.speak(utterance);
-    setStatusMessage("Die Frage wird vorgelesen.");
-    trackEvent("question_replayed");
+    trackEvent("offer_list_opened", { interest: interest.id });
   };
 
   const handlePrototypeNavigation = (label: string) => {
     setStatusMessage(`${label} wird im nächsten Prototyp-Schritt ergänzt.`);
     trackEvent("prototype_navigation_selected", { destination: label });
   };
+
+  const handleAllOffers = () => {
+    setSelectedInterest(null);
+    setVisibleOffers("all");
+    setStatusMessage("Alle Angebote werden angezeigt.");
+    trackEvent("offer_list_opened", { interest: "all" });
+  };
+
+  const handleOffersBack = () => {
+    setVisibleOffers(null);
+    setStatusMessage("Wähle ein Thema. Sprich oder tippe deine Antwort.");
+    trackEvent("offer_list_closed");
+  };
+
+  const handleOfferOpen = (offer: Offer) => {
+    trackEvent("offer_opened", {
+      interest: visibleOffers ?? "all",
+      provider: offer.provider,
+      source_id: offer.sourceId,
+    });
+  };
+
+  const handleVoiceRecommendations = useCallback((offers: Offer[]) => {
+    setSelectedInterest(null);
+    setVoiceOfferIds(offers.map((offer) => offer.id));
+    setVisibleOffers("voice");
+  }, []);
 
   return (
     <main className="pixel-discovery">
@@ -100,78 +105,82 @@ export function App() {
       </div>
 
       <header className="pixel-header">
-        <span className="pixel-brand">Bobby</span>
+        <div className="pixel-brand-lockup">
+          <span className="pixel-brand">Bobby</span>
+          <span className="ai-disclosure">ist eine KI</span>
+        </div>
         <nav aria-label="Hauptnavigation" className="pixel-nav">
           <button aria-current="page" className="nav-button nav-button-active" type="button">
             Entdecken
           </button>
-          <button onClick={() => handlePrototypeNavigation("Alle Angebote")} type="button">
+          <button disabled={isVoiceActive} onClick={handleAllOffers} type="button">
             Alle Angebote
           </button>
-          <button onClick={() => handlePrototypeNavigation("Für Eltern")} type="button">
+          <button disabled={isVoiceActive} onClick={() => handlePrototypeNavigation("Für Eltern")} type="button">
             Für Eltern
           </button>
         </nav>
       </header>
 
-      <section aria-labelledby="discovery-question" className="pixel-panel">
-        <div className="question-row">
-          <h1 id="discovery-question">{QUESTION}</h1>
-          <button
-            aria-label="Frage anhören"
-            className="speaker-button"
-            data-umami-event="question_replayed"
-            onClick={handleQuestionReplay}
-            type="button"
-          >
-            <SpeakerHighIcon aria-hidden="true" size={28} weight="regular" />
-          </button>
-        </div>
+      <section
+        aria-label={visibleOffers ? "Angebote" : undefined}
+        aria-labelledby={visibleOffers ? undefined : "discovery-question"}
+        className={`pixel-panel${visibleOffers ? " pixel-panel-results" : ""}`}
+      >
+        {visibleOffers ? (
+          <OfferResults
+            interest={visibleOffers}
+            offerIds={visibleOffers === "voice" ? voiceOfferIds : undefined}
+            onBack={handleOffersBack}
+            onOfferOpen={handleOfferOpen}
+          />
+        ) : (
+          <>
+            <h1 id="discovery-question">{QUESTION}</h1>
 
-        <div aria-label="Interessen" className="interest-list" role="group">
-          {INTERESTS.map((interest) => {
-            const InterestIcon = interest.icon;
-            const isSelected = selectedInterest === interest.id;
+            {!isVoiceActive && (
+              <div aria-label="Interessen" className="interest-list" role="group">
+                {INTERESTS.map((interest) => {
+                  const InterestIcon = interest.icon;
+                  const isSelected = selectedInterest === interest.id;
 
-            return (
-              <button
-                aria-pressed={isSelected}
-                className="interest-button"
-                data-interest={interest.id}
-                data-umami-event="child_interest_selected"
-                data-umami-event-interest={interest.id}
-                key={interest.id}
-                onClick={() => handleInterestSelect(interest)}
-                type="button"
-              >
-                <span className="interest-icon-wrap">
-                  <InterestIcon aria-hidden="true" size={44} weight="duotone" />
-                  <CheckCircleIcon
-                    aria-hidden="true"
-                    className="selected-icon"
-                    size={22}
-                    weight="fill"
-                  />
-                </span>
-                <span>{interest.label}</span>
-              </button>
-            );
-          })}
-        </div>
+                  return (
+                    <button
+                      aria-pressed={isSelected}
+                      className="interest-button"
+                      data-interest={interest.id}
+                      data-umami-event="child_interest_selected"
+                      data-umami-event-interest={interest.id}
+                      key={interest.id}
+                      onClick={() => handleInterestSelect(interest)}
+                      type="button"
+                    >
+                      <span className="interest-icon-wrap">
+                        <InterestIcon aria-hidden="true" size={44} weight="duotone" />
+                        <CheckCircleIcon
+                          aria-hidden="true"
+                          className="selected-icon"
+                          size={22}
+                          weight="fill"
+                        />
+                      </span>
+                      <span>{interest.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
 
-        <button
-          aria-pressed={isListening}
-          className="voice-button"
-          data-umami-event="voice_answer_toggled"
-          onClick={handleListenToggle}
-          type="button"
-        >
-          <span aria-hidden="true" className="voice-icon-stack">
-            <MicrophoneIcon className="voice-icon voice-icon-idle" size={28} weight="regular" />
-            <WaveformIcon className="voice-icon voice-icon-active" size={28} weight="bold" />
-          </span>
-          <span>{isListening ? "Zuhören beenden" : "Antwort sagen"}</span>
-        </button>
+          </>
+        )}
+
+        <VoiceAnswerButton
+          isHidden={visibleOffers !== null && visibleOffers !== "voice"}
+          offers={offerCatalog?.offers ?? []}
+          onActiveChange={setIsVoiceActive}
+          onRecommendations={handleVoiceRecommendations}
+          onStatusMessage={setStatusMessage}
+        />
 
         <p aria-live="polite" className="sr-only" role="status">
           {statusMessage}
@@ -183,9 +192,9 @@ export function App() {
         <img
           alt=""
           className="mascot-sprite mascot-idle"
-          src={isListening ? "/assets/kiko-mallard-speaking.png" : "/assets/kiko-mallard.png"}
+          src={isVoiceActive ? "/assets/kiko-mallard-speaking.png" : "/assets/kiko-mallard.png"}
         />
-        {!isListening && (
+        {!isVoiceActive && (
           <img alt="" className="mascot-sprite mascot-blink" src="/assets/kiko-mallard-blink.png" />
         )}
       </div>
