@@ -95,7 +95,6 @@ export function App() {
           src="/assets/heilbronn-pixel-background.png"
         />
         <img alt="" className="scene-layer scene-clouds" src="/assets/heilbronn-pixel-clouds.png" />
-        <div className="water-shimmer" />
         <img alt="" className="scene-layer scene-grass" src="/assets/heilbronn-pixel-grass.png" />
       </div>
 
@@ -185,9 +184,6 @@ export function App() {
           className="mascot-sprite mascot-idle"
           src={isListening ? "/assets/kiko-mallard-speaking.png" : "/assets/kiko-mallard.png"}
         />
-        {!isListening && (
-          <img alt="" className="mascot-sprite mascot-blink" src="/assets/kiko-mallard-blink.png" />
-        )}
       </div>
     </main>
   );

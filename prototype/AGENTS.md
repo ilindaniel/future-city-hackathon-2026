@@ -12,7 +12,8 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 
 - Keep the interface child-friendly without toy-like 3D art or decorative clutter.
 - Use a full-viewport pixel-art Heilbronn scene with recognizable city, Neckar, vineyard, and experimenta cues.
-- Animate separate cloud, grass, water, foreground, and Bobby layers with subtle stepped ambient motion. Do not move scene elements in response to pointer movement.
+- Build the scene from four layers, back to front: sky, clouds, city (transparent sky, no clouds, no front grass), front grass. Bobby stands between the city and the front grass.
+- Only the clouds drift, slowly and smoothly. No blinking or flickering motion: no eye-blink sprite, no water shimmer, no grass sway (decided 2026-11-14). Do not move scene elements in response to pointer movement.
 - Show Bobby's smiling sprite while voice mode is active.
 - Provide a static reduced-motion state and prefer native browser animation over heavy runtime dependencies.
 - Import offers through provider-specific HTTP adapters into a validated `public/data/offers.json` catalogue. Use browser automation only when a provider cannot be read reliably through normal HTTP requests.

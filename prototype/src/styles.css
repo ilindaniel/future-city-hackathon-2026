@@ -80,36 +80,13 @@ button:focus-visible {
 .scene-clouds {
   z-index: 1;
   opacity: 0.88;
-  animation: cloud-drift 18s steps(9, end) infinite alternate;
-  will-change: transform;
-}
-
-.water-shimmer {
-  position: absolute;
-  z-index: 2;
-  top: 53%;
-  left: -4%;
-  width: 108%;
-  height: 18%;
-  opacity: 0.22;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0 40px,
-    rgb(239 246 255 / 75%) 40px 46px,
-    transparent 46px 112px
-  );
-  mix-blend-mode: screen;
-  mask-image: linear-gradient(to bottom, transparent, #000 24%, #000 76%, transparent);
-  animation: water-shimmer 4.8s steps(6, end) infinite;
-  pointer-events: none;
+  animation: cloud-drift 60s linear infinite alternate;
   will-change: transform;
 }
 
 .scene-grass {
   z-index: 5;
-  animation: grass-sway 3.2s steps(2, end) infinite alternate;
-  transform-origin: 50% 100%;
-  will-change: transform;
+  transform: scale(1.025);
 }
 
 .pixel-header {
@@ -357,11 +334,6 @@ h1 {
   will-change: transform, opacity;
 }
 
-.mascot-blink {
-  opacity: 0;
-  animation: mascot-bob 2.8s steps(2, end) infinite alternate, mascot-blink 6s steps(1, end) infinite;
-}
-
 .mascot-shadow {
   position: absolute;
   bottom: 23%;
@@ -396,26 +368,6 @@ h1 {
   }
 }
 
-@keyframes water-shimmer {
-  from {
-    transform: translateX(-16px);
-  }
-
-  to {
-    transform: translateX(24px);
-  }
-}
-
-@keyframes grass-sway {
-  from {
-    transform: translate3d(-2px, 0, 0) scale(1.025) skewX(-0.12deg);
-  }
-
-  to {
-    transform: translate3d(2px, 0, 0) scale(1.025) skewX(0.12deg);
-  }
-}
-
 @keyframes mascot-bob {
   from {
     transform: translateY(0);
@@ -423,20 +375,6 @@ h1 {
 
   to {
     transform: translateY(-5px);
-  }
-}
-
-@keyframes mascot-blink {
-  0%,
-  92%,
-  96%,
-  100% {
-    opacity: 0;
-  }
-
-  93%,
-  95% {
-    opacity: 1;
   }
 }
 
@@ -598,7 +536,6 @@ h1 {
   .scene-background,
   .scene-clouds,
   .scene-grass,
-  .water-shimmer,
   .mascot-sprite,
   .mascot-shadow {
     transform: none;
@@ -608,7 +545,4 @@ h1 {
     transform: translateX(-50%);
   }
 
-  .mascot-blink {
-    opacity: 0;
-  }
 }
