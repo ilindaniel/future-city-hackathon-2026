@@ -7,6 +7,7 @@
     "dev": "vite",
     "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.ingestion.json",
     "build": "vite build && node scripts/prepare-sites-build.mjs",
+    "start": "serve --single --listen $PORT dist/client",
     "import:offers": "node ingestion/import-offers.ts",
     "preview": "vite preview",
     "test:offers": "node --test tests/offers/*.test.ts",
@@ -21,6 +22,7 @@
     "loading-dev": "^0.3.8",
     "react": "19.2.0",
     "react-dom": "19.2.0",
+    "serve": "^14.2.8",
     "swr": "^2.5.1",
     "vite": "6.4.2"
   },
