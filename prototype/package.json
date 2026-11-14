@@ -12,15 +12,19 @@
     "preview": "vite preview",
     "test:offers": "node --test tests/offers/*.test.ts",
     "test:server": "node --test tests/server/*.test.ts",
+    "test:sharing": "node --test tests/sharing/*.test.ts",
     "test:voice": "node --test tests/voice/*.test.ts",
     "test:sites": "node --test tests/sites-worker.test.mjs"
   },
   "dependencies": {
     "@elevenlabs/client": "^1.36.1",
+    "@fontsource-variable/lexend": "^5.3.0",
+    "@fontsource-variable/pixelify-sans": "^5.3.0",
     "@phosphor-icons/react": "^2.1.10",
     "@vitejs/plugin-react": "5.0.4",
     "cheerio": "^1.2.0",
     "loading-dev": "^0.3.8",
+    "qrcode": "^1.5.4",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "serve-handler": "^6.1.8",
@@ -29,6 +33,7 @@
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
+    "@types/qrcode": "^1.5.6",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@types/serve-handler": "^6.1.4",

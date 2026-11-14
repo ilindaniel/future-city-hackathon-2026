@@ -1,6 +1,7 @@
 import type { Conversation as ConversationSession } from "@elevenlabs/client";
 import {
   ArrowsClockwiseIcon,
+  CaretDownIcon,
   InfoIcon,
   KeyboardIcon,
   MicrophoneIcon,
@@ -19,6 +20,7 @@ import type { Offer } from "../offers/use-offers";
 import { getVoiceSessionOptions, requestMicrophoneAccess } from "./voice-session";
 
 type VoiceAnswerButtonProps = {
+  isCompact?: boolean;
   isHidden?: boolean;
   offers: Offer[];
   onActiveChange: (isActive: boolean) => void;
@@ -57,6 +59,8 @@ const VOICE_TOPICS = new Set<VoiceSearchTopic>([
 ]);
 const VOICE_OPEN_SOUND_URL = "/assets/bobby-voice-open.mp3";
 const VOICE_CLOSE_SOUND_URL = "/assets/bobby-voice-close.mp3";
+const CONVERSATION_CONTEXT =
+  "Die Begrüßung und deine Vorstellung sind bereits beendet. Begrüße das Kind nicht noch einmal und stelle dich nicht erneut vor. Antworte direkt auf seine aktuelle Aussage.";
 const SUGGESTION_REPLIES: SuggestionReply[] = [
   {
     id: "like",
@@ -95,9 +99,9 @@ function getFriendlyError(error: unknown) {
     return "Das Mikrofon ist blockiert. Erlaube den Mikrofonzugriff und versuche es erneut.";
   }
   if (error instanceof DOMException && error.name === "NotFoundError") {
-    return "Kein Mikrofon gefunden. Du kannst stattdessen ein Bild auswählen.";
+    return "Kein Mikrofon gefunden. Du kannst deine Antwort stattdessen tippen.";
   }
-  return "Der Sprachmodus ist gerade nicht verfügbar. Du kannst stattdessen ein Bild auswählen.";
+  return "Der Sprachmodus ist gerade nicht verfügbar. Du kannst deine Antwort stattdessen tippen.";
 }
 
 function getSetupErrorCode(error: unknown) {
@@ -107,6 +111,7 @@ function getSetupErrorCode(error: unknown) {
 }
 
 export function VoiceAnswerButton({
+  isCompact = false,
   isHidden = false,
   offers,
   onActiveChange,
@@ -123,12 +128,12 @@ export function VoiceAnswerButton({
   const [typedMessage, setTypedMessage] = useState("");
   const [typedMessageError, setTypedMessageError] = useState("");
   const [areSuggestionRepliesVisible, setAreSuggestionRepliesVisible] = useState(false);
+  const [isCompactExpanded, setIsCompactExpanded] = useState(false);
   const conversationRef = useRef<ConversationSession | null>(null);
   const conversationModeRef = useRef<ConversationMode | null>(null);
   const textInputRef = useRef<HTMLInputElement | null>(null);
   const offersRef = useRef(offers);
   const pendingRecommendationsRef = useRef<Offer[]>([]);
-  const hasPendingSuggestionReplyRef = useRef(false);
   const openSoundRef = useRef<HTMLAudioElement | null>(null);
   const closeSoundRef = useRef<HTMLAudioElement | null>(null);
   const isActive = connectionStatus !== "disconnected";
@@ -141,7 +146,6 @@ export function VoiceAnswerButton({
         : undefined;
     const recommendations = findRecommendedOffers(offersRef.current, { topic, age });
     pendingRecommendationsRef.current = recommendations;
-    hasPendingSuggestionReplyRef.current = recommendations.length > 0;
     if (recommendations.length > 0) onRecommendations(recommendations);
     onStatusMessage("Bobby sucht passende Angebote.");
     trackEvent("voice_offer_search_completed", {
@@ -162,7 +166,6 @@ export function VoiceAnswerButton({
     setTypedMessage("");
     setTypedMessageError("");
     setAreSuggestionRepliesVisible(false);
-    hasPendingSuggestionReplyRef.current = false;
     const recommendations = pendingRecommendationsRef.current;
     pendingRecommendationsRef.current = [];
     onStatusMessage(
@@ -185,10 +188,18 @@ export function VoiceAnswerButton({
   }, [offers]);
 
   useEffect(() => {
-    if (conversationMode === "text" && connectionStatus === "connected") {
+    if (
+      conversationMode === "text" &&
+      connectionStatus === "connected" &&
+      (!isCompact || isCompactExpanded)
+    ) {
       textInputRef.current?.focus();
     }
-  }, [connectionStatus, conversationMode]);
+  }, [connectionStatus, conversationMode, isCompact, isCompactExpanded]);
+
+  useEffect(() => {
+    if (isCompact) setIsCompactExpanded(false);
+  }, [isCompact]);
 
   useEffect(() => {
     const openSound = new Audio(VOICE_OPEN_SOUND_URL);
@@ -245,14 +256,14 @@ export function VoiceAnswerButton({
     setTypedMessage("");
     setTypedMessageError("");
     setAreSuggestionRepliesVisible(false);
-    hasPendingSuggestionReplyRef.current = false;
+    setIsCompactExpanded(false);
     pendingRecommendationsRef.current = [];
     onStatusMessage(mode === "voice" ? "Mikrofon wird vorbereitet." : "Bobby wird verbunden.");
     trackEvent("voice_answer_started", { mode });
 
     try {
       const sessionOptions = await getVoiceSessionOptions();
-      await requestMicrophoneAccess();
+      if (mode === "voice") await requestMicrophoneAccess();
       const { Conversation, stripAudioTags } = await import("@elevenlabs/client");
       conversationRef.current = await Conversation.startSession({
         ...sessionOptions,
@@ -263,6 +274,7 @@ export function VoiceAnswerButton({
           if (mode === "text") conversation.setMicMuted(true);
         },
         onConnect: () => {
+          conversationRef.current?.sendContextualUpdate(CONVERSATION_CONTEXT);
           playVoiceSound(openSoundRef.current, "open");
           setConnectionStatus("connected");
           setErrorMessage("");
@@ -272,7 +284,7 @@ export function VoiceAnswerButton({
         onDisconnect: handleDisconnect,
         onError: () => {
           console.error("[voice] ElevenLabs conversation failed");
-          const message = "Der Sprachmodus wurde unterbrochen. Du kannst stattdessen ein Bild auswählen.";
+          const message = "Der Sprachmodus wurde unterbrochen. Du kannst deine Antwort stattdessen tippen.";
           setErrorMessage(message);
           onStatusMessage(message);
           trackEvent("voice_answer_error", { stage: "conversation" });
@@ -286,8 +298,7 @@ export function VoiceAnswerButton({
             return;
           }
           setAgentSubtitle(subtitle);
-          if (hasPendingSuggestionReplyRef.current) {
-            hasPendingSuggestionReplyRef.current = false;
+          if (pendingRecommendationsRef.current.length > 0) {
             setAreSuggestionRepliesVisible(true);
           }
           if (conversationModeRef.current === "text") {
@@ -357,6 +368,7 @@ export function VoiceAnswerButton({
     setTypedMessage("");
     setTypedMessageError("");
     setAreSuggestionRepliesVisible(false);
+    if (isCompact) setIsCompactExpanded(false);
     trackEvent("text_answer_sent");
   };
 
@@ -364,27 +376,61 @@ export function VoiceAnswerButton({
     if (!sendConversationMessage(reply.message, reply.label)) return;
 
     setAreSuggestionRepliesVisible(false);
+    if (isCompact) setIsCompactExpanded(false);
     trackEvent("suggestion_reply_sent", { reply: reply.id });
   };
 
   const activeLabel =
     connectionStatus === "connecting"
-      ? "Bobby wird verbunden"
+      ? isCompact ? "Verbinden" : "Bobby wird verbunden"
       : connectionStatus === "disconnecting"
-        ? "Bobby wird beendet"
-        : "Unterhaltung beenden";
+        ? isCompact ? "Beenden" : "Bobby wird beendet"
+        : isCompact ? "Beenden" : "Unterhaltung beenden";
+
+  const endSessionButton = (
+    <button
+      className="voice-button voice-end-button"
+      disabled={connectionStatus !== "connected"}
+      onClick={() => void handleEndSession()}
+      type="button"
+    >
+      <span aria-hidden="true" className="voice-icon-stack">
+        {connectionStatus === "connecting" ? <Swirl duration={1200} size={28} /> : <WaveformIcon size={28} weight="bold" />}
+      </span>
+      <span>{activeLabel}</span>
+    </button>
+  );
+
+  const suggestionReplies =
+    areSuggestionRepliesVisible && connectionStatus === "connected" ? (
+      <div aria-label="Antwortmöglichkeiten" className="voice-suggestion-replies" role="group">
+        {SUGGESTION_REPLIES.map((reply) => {
+          const ReplyIcon = reply.icon;
+
+          return (
+            <button key={reply.id} onClick={() => handleSuggestionReply(reply)} type="button">
+              <ReplyIcon aria-hidden="true" size={22} weight="bold" />
+              <span>{reply.label}</span>
+            </button>
+          );
+        })}
+      </div>
+    ) : null;
 
   return (
-    <div className={`voice-control${isActive ? " voice-control-active" : ""}`} hidden={isHidden}>
+    <div
+      className={`voice-control${isActive ? " voice-control-active" : ""}${isCompact ? " voice-control-compact" : ""}${isCompactExpanded ? " voice-control-expanded" : ""}`}
+      hidden={isHidden}
+    >
       {isActive && (
         <div aria-live="polite" className="voice-subtitles">
           {userSubtitle ? (
-            <p>
+            <p className="voice-subtitle-user">
               <strong>Du:</strong> {userSubtitle}
             </p>
           ) : null}
           {agentSubtitle ? (
-            <p>
+            <p className="voice-subtitle-agent">
               <strong>Bobby:</strong> {agentSubtitle}
             </p>
           ) : null}
@@ -395,103 +441,108 @@ export function VoiceAnswerButton({
           )}
         </div>
       )}
-      {areSuggestionRepliesVisible && connectionStatus === "connected" && (
-        <div aria-label="Antwortmöglichkeiten" className="voice-suggestion-replies" role="group">
-          {SUGGESTION_REPLIES.map((reply) => {
-            const ReplyIcon = reply.icon;
-
-            return (
-              <button key={reply.id} onClick={() => handleSuggestionReply(reply)} type="button">
-                <ReplyIcon aria-hidden="true" size={22} weight="bold" />
-                <span>{reply.label}</span>
-              </button>
-            );
-          })}
-        </div>
-      )}
-      {connectionStatus === "disconnected" ? (
-        <div className="voice-actions">
-          <button
-            className="voice-button"
-            data-umami-event="voice_answer_toggled"
-            data-umami-event-mode="voice"
-            onClick={() => void handleStartSession("voice")}
-            type="button"
-          >
-            <MicrophoneIcon aria-hidden="true" size={28} weight="regular" />
-            <span>Antwort sagen</span>
-          </button>
-          <button
-            className="voice-button"
-            data-umami-event="voice_answer_toggled"
-            data-umami-event-mode="text"
-            onClick={() => void handleStartSession("text")}
-            type="button"
-          >
-            <KeyboardIcon aria-hidden="true" size={28} weight="regular" />
-            <span>Antwort tippen</span>
-          </button>
-        </div>
-      ) : (
-        <>
-          {conversationMode === "text" && connectionStatus === "connected" && (
-            <form className="voice-text-form" onSubmit={handleTextSubmit}>
-              <label htmlFor="bobby-message">Nachricht an Bobby</label>
-              <div className="voice-text-row">
-                <input
-                  aria-describedby={typedMessageError ? "bobby-message-error" : undefined}
-                  aria-invalid={typedMessageError ? true : undefined}
-                  autoComplete="off"
-                  id="bobby-message"
-                  inputMode="text"
-                  maxLength={500}
-                  name="bobby-message"
-                  onChange={(event) => {
-                    setTypedMessage(event.target.value);
-                    setTypedMessageError("");
-                    conversationRef.current?.sendUserActivity();
-                  }}
-                  onFocus={() => conversationRef.current?.sendUserActivity()}
-                  placeholder="Zum Beispiel: Ich mag Roboter"
-                  ref={textInputRef}
-                  required
-                  type="text"
-                  value={typedMessage}
-                />
-                <button className="voice-send-button" type="submit">
-                  <PaperPlaneRightIcon aria-hidden="true" size={24} weight="bold" />
-                  <span>Senden</span>
+      <div className="voice-control-actions">
+        {isCompact && isActive && !isCompactExpanded ? (
+          <>
+            {suggestionReplies}
+            <div className="voice-compact-actions">
+              {conversationMode === "text" && (
+                <button
+                  aria-controls="bobby-expanded-controls"
+                  aria-expanded="false"
+                  className="voice-button voice-expand-button"
+                  disabled={connectionStatus !== "connected"}
+                  onClick={() => setIsCompactExpanded(true)}
+                  type="button"
+                >
+                  <KeyboardIcon aria-hidden="true" size={22} weight="bold" />
+                  <span>Eigene Antwort tippen</span>
                 </button>
-              </div>
-              {typedMessageError && (
-                <p className="voice-text-error" id="bobby-message-error">
-                  {typedMessageError}
-                </p>
               )}
-            </form>
-          )}
-          <button
-            className="voice-button voice-end-button"
-            disabled={connectionStatus !== "connected"}
-            onClick={() => void handleEndSession()}
-            type="button"
-          >
-            <span aria-hidden="true" className="voice-icon-stack">
-              {connectionStatus === "connecting" ? (
-                <Swirl duration={1200} size={28} />
+              {endSessionButton}
+            </div>
+          </>
+        ) : (
+          <>
+            {isCompact && isActive && (
+              <button
+                aria-controls="bobby-expanded-controls"
+                aria-expanded="true"
+                className="voice-collapse-button"
+                onClick={() => setIsCompactExpanded(false)}
+                type="button"
+              >
+                <CaretDownIcon aria-hidden="true" size={20} weight="bold" />
+                <span>Weniger</span>
+              </button>
+            )}
+            <div id={isCompact ? "bobby-expanded-controls" : undefined} className="voice-expanded-controls">
+              {suggestionReplies}
+              {connectionStatus === "disconnected" ? (
+                <div className="voice-actions">
+                  <button
+                    className="voice-button"
+                    data-umami-event="voice_answer_toggled"
+                    data-umami-event-mode="voice"
+                    onClick={() => void handleStartSession("voice")}
+                    type="button"
+                  >
+                    <MicrophoneIcon aria-hidden="true" size={28} weight="regular" />
+                    <span>Antwort sagen</span>
+                  </button>
+                  <button
+                    className="voice-button"
+                    data-umami-event="voice_answer_toggled"
+                    data-umami-event-mode="text"
+                    onClick={() => void handleStartSession("text")}
+                    type="button"
+                  >
+                    <KeyboardIcon aria-hidden="true" size={28} weight="regular" />
+                    <span>Antwort tippen</span>
+                  </button>
+                </div>
               ) : (
-                <WaveformIcon size={28} weight="bold" />
+                <>
+                  {conversationMode === "text" && connectionStatus === "connected" && (
+                    <form className="voice-text-form" onSubmit={handleTextSubmit}>
+                      <label htmlFor="bobby-message">Nachricht an Bobby</label>
+                      <div className="voice-text-row">
+                        <input
+                          aria-describedby={typedMessageError ? "bobby-message-error" : undefined}
+                          aria-invalid={typedMessageError ? true : undefined}
+                          autoComplete="off"
+                          id="bobby-message"
+                          inputMode="text"
+                          maxLength={500}
+                          name="bobby-message"
+                          onChange={(event) => {
+                            setTypedMessage(event.target.value);
+                            setTypedMessageError("");
+                            conversationRef.current?.sendUserActivity();
+                          }}
+                          onFocus={() => conversationRef.current?.sendUserActivity()}
+                          placeholder="Zum Beispiel: Ich mag Roboter"
+                          ref={textInputRef}
+                          required
+                          type="text"
+                          value={typedMessage}
+                        />
+                        <button className="voice-send-button" type="submit">
+                          <PaperPlaneRightIcon aria-hidden="true" size={24} weight="bold" />
+                          <span>Senden</span>
+                        </button>
+                      </div>
+                      {typedMessageError && <p className="voice-text-error" id="bobby-message-error">{typedMessageError}</p>}
+                    </form>
+                  )}
+                  {endSessionButton}
+                </>
               )}
-            </span>
-            <span>{activeLabel}</span>
-          </button>
-        </>
-      )}
-      {errorMessage && (
-        <p className="voice-error" role="alert">
-          {errorMessage}
-        </p>
-      )}
+            </div>
+          </>
+        )}
+        {errorMessage && <p className="voice-error" role="alert">{errorMessage}</p>}
+      </div>
     </div>
   );
 }

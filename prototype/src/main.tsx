@@ -1,5 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import "@fontsource-variable/lexend";
+import "@fontsource-variable/pixelify-sans";
 import { App } from "./App";
 import "./styles.css";
 
