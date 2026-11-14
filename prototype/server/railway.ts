@@ -126,6 +126,15 @@ function isElevenLabsSignedUrl(value: unknown): value is string {
   }
 }
 
+function getUpstreamErrorCode(value: unknown) {
+  if (typeof value !== "object" || value === null || !("detail" in value)) return undefined;
+  const { detail } = value;
+  if (typeof detail !== "object" || detail === null || !("status" in detail)) return undefined;
+  return typeof detail.status === "string" && /^[a-z0-9_]{1,64}$/.test(detail.status)
+    ? detail.status
+    : undefined;
+}
+
 async function requestSignedUrl({
   agentId,
   apiKey,
@@ -153,7 +162,11 @@ async function requestSignedUrl({
     });
 
     if (!response.ok) {
-      logger.error("voice_session_upstream_failed", { status: response.status });
+      const value = (await response.json().catch(() => undefined)) as unknown;
+      logger.error("voice_session_upstream_failed", {
+        status: response.status,
+        errorCode: getUpstreamErrorCode(value),
+      });
       return undefined;
     }
 

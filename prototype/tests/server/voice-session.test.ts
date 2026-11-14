@@ -140,6 +140,43 @@ test("does not pass an invalid upstream response to the browser", async () => {
   );
 });
 
+test("logs only the safe upstream error code", async () => {
+  const errors: unknown[][] = [];
+  const upstreamFetch = createUpstreamFetch(() =>
+    Response.json(
+      {
+        detail: {
+          status: "missing_permissions",
+          message: "secret provider details",
+        },
+      },
+      { status: 401 },
+    ),
+  );
+
+  await withServer(
+    {
+      apiKey: "secret-test-key",
+      agentId: "agent_test",
+      upstreamFetch,
+      logger: { error: (...values: unknown[]) => errors.push(values), info() {} },
+    },
+    async (baseUrl) => {
+      const response = await fetch(`${baseUrl}/api/voice/session`, {
+        method: "POST",
+        headers: { origin: baseUrl },
+      });
+
+      assert.equal(response.status, 502);
+      assert.deepEqual(errors, [
+        ["voice_session_upstream_failed", { status: 401, errorCode: "missing_permissions" }],
+      ]);
+      assert.equal(JSON.stringify(errors).includes("secret provider details"), false);
+      assert.equal(JSON.stringify(errors).includes("secret-test-key"), false);
+    },
+  );
+});
+
 test("rate-limits repeated session requests", async () => {
   const upstreamFetch = createUpstreamFetch(() => Response.json({ signed_url: SIGNED_URL }));
 
