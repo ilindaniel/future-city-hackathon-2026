@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-13T22:55:03.325Z",
+  "generatedAt": "2026-11-14T11:04:20.618Z",
   "offers": [
     {
       "schemaVersion": 1,
@@ -255,7 +255,7 @@
         "currency": "EUR"
       },
       "availability": "unknown",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -287,8 +287,8 @@
         "type": "free",
         "currency": "EUR"
       },
-      "availability": "available",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "availability": "unknown",
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -322,7 +322,7 @@
         "currency": "EUR"
       },
       "availability": "unknown",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -367,7 +367,7 @@
         "currency": "EUR"
       },
       "availability": "unknown",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -424,7 +424,7 @@
         "currency": "EUR"
       },
       "availability": "unknown",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -458,7 +458,7 @@
         "currency": "EUR"
       },
       "availability": "unknown",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -498,7 +498,7 @@
         "currency": "EUR"
       },
       "availability": "available",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -543,7 +543,7 @@
         "currency": "EUR"
       },
       "availability": "full",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -577,7 +577,7 @@
         "currency": "EUR"
       },
       "availability": "waitlist",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -610,7 +610,7 @@
         "currency": "EUR"
       },
       "availability": "unknown",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -643,7 +643,7 @@
         "currency": "EUR"
       },
       "availability": "unknown",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -677,7 +677,7 @@
         "currency": "EUR"
       },
       "availability": "waitlist",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -718,7 +718,7 @@
         "currency": "EUR"
       },
       "availability": "waitlist",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -759,7 +759,7 @@
         "currency": "EUR"
       },
       "availability": "waitlist",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -800,7 +800,7 @@
         "currency": "EUR"
       },
       "availability": "waitlist",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -834,7 +834,7 @@
         "currency": "EUR"
       },
       "availability": "available",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -867,7 +867,7 @@
         "currency": "EUR"
       },
       "availability": "full",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -900,7 +900,7 @@
         "currency": "EUR"
       },
       "availability": "unknown",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -945,7 +945,94 @@
         "currency": "EUR"
       },
       "availability": "full",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "hdf:261H305008",
+      "provider": "hdf",
+      "sourceId": "261H305008",
+      "sourceUrl": "https://hdf-hn.de/kurs/kinderferienbox-wie-funktionieren-roboter-und-wie-werden-sie-programmiert-261H305008/",
+      "title": "KinderFerienBox: Wie funktionieren Roboter und wie werden sie programmiert?",
+      "description": "In diesem spielerischen Kurs entdecken Kinder, wie Roboter „denken“, was sie brauchen um zu funktionieren und wie man ihnen Schritt für Schritt Aufgaben beibringt - ganz ohne Tablet oder Bildschirm. Wir starten kreativ und anschließend planen die Kinder mit kindgerechten Robotern Wege, geben Befehle, probieren aus und verbessern gemeinsam ihre Ideen. Ganz nebenbei entwickeln die Kinder wichtige Zukunftskompetenzen: logisches und planvolles Denken, Problemlösefreude, Teamarbeit und frühe Begeisterung für Technik - ein erster und wichtiger Schritt in Richtung digitale Kompetenz. Der Kurs wird von der Bildungsinitiative ROKI – Robotic4Kids durchgeführt.\nKinderFerienBox - Faschingsferien 2027",
+      "topics": [
+        "robotics",
+        "coding"
+      ],
+      "age": {
+        "min": 6,
+        "max": 10
+      },
+      "schedule": [
+        {
+          "date": "2027-02-11",
+          "startTime": "09:00",
+          "endTime": "10:00",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-02-11",
+          "startTime": "10:00",
+          "endTime": "12:30",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-02-12",
+          "startTime": "09:00",
+          "endTime": "10:00",
+          "timezone": "Europe/Berlin"
+        },
+        {
+          "date": "2027-02-12",
+          "startTime": "10:00",
+          "endTime": "12:30",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Heilbronn, Haus der Familie, Erich-Mendelsohn-Str. 1C, Raum 8"
+      },
+      "price": {
+        "type": "paid",
+        "amountCents": 6000,
+        "currency": "EUR"
+      },
+      "availability": "available",
+      "importedAt": "2026-11-14T11:04:20.618Z"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "hdf:261H305006",
+      "provider": "hdf",
+      "sourceId": "261H305006",
+      "sourceUrl": "https://hdf-hn.de/kurs/kinderferienbox-programmieren-lernen-scratch-261H305006/",
+      "title": "KinderFerienBox: Programmieren Lernen - Scratch",
+      "description": "In diesem Workshop erlernen die Kinder die visuelle Programmiersprache Scratch, speziell für Kinder konzipiert. Ganz ohne Vorkenntnisse können die Kinder durch das Zusammenfügen von Code-Blöcken eigene Programme erstellen. In Zweiergruppen entdecken sie die Grundlagen des Programmierens und gestalten ihre eigenen Charaktere, die sie zum Leben erwecken - sie lassen sie laufen, hüpfen und spannende Aufgaben meistern. Scratch fördert kreatives Denken und Problemlösungsfähigkeiten, da die Kinder lernen, logische Abläufe zu erstellen und ihre Ideen in digitale Projekte umzusetzen.\nKinderFerienBox - Faschingsferien 2027",
+      "topics": [
+        "coding"
+      ],
+      "age": {
+        "min": 8,
+        "max": 12
+      },
+      "schedule": [
+        {
+          "date": "2027-02-13",
+          "startTime": "10:00",
+          "endTime": "13:00",
+          "timezone": "Europe/Berlin"
+        }
+      ],
+      "location": {
+        "name": "Heilbronn, Haus der Familie, Erich-Mendelsohn-Str. 1C, Raum 1"
+      },
+      "price": {
+        "type": "paid",
+        "amountCents": 3000,
+        "currency": "EUR"
+      },
+      "availability": "waitlist",
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -991,7 +1078,7 @@
         "currency": "EUR"
       },
       "availability": "full",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -1031,7 +1118,7 @@
         "currency": "EUR"
       },
       "availability": "available",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -1118,7 +1205,7 @@
         "currency": "EUR"
       },
       "availability": "full",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -1205,7 +1292,7 @@
         "currency": "EUR"
       },
       "availability": "full",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -1239,7 +1326,7 @@
         "currency": "EUR"
       },
       "availability": "available",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -1285,7 +1372,7 @@
         "currency": "EUR"
       },
       "availability": "full",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -1318,7 +1405,7 @@
         "currency": "EUR"
       },
       "availability": "unknown",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -1363,7 +1450,7 @@
         "currency": "EUR"
       },
       "availability": "available",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     },
     {
       "schemaVersion": 1,
@@ -1396,7 +1483,7 @@
         "currency": "EUR"
       },
       "availability": "full",
-      "importedAt": "2026-11-13T22:55:03.325Z"
+      "importedAt": "2026-11-14T11:04:20.618Z"
     }
   ]
 }

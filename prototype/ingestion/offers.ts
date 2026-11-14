@@ -62,7 +62,7 @@ export function classifyOfferTopics(value: string, defaultTopics: readonly Offer
   if (/\bki\b|künstliche intelligenz|machine learning|chatgpt/.test(normalizedValue)) topics.add("ai");
   if (/robot|first lego league/.test(normalizedValue)) topics.add("robotics");
   if (
-    /programm|coding|python|scratch|mikrocontroller|microcontroller|datenbank|webseite|\bweb-?app\b|(?:entwickel|programmier)\w*\s+(?:eine\s+)?app|\bcode\b/.test(
+    /programmier|coding|python|scratch|mikrocontroller|microcontroller|datenbank|webseite|\bweb-?app\b|(?:entwickel|programmier)\w*\s+(?:eine\s+)?app|\bcode\b/.test(
       normalizedValue,
     )
   ) {

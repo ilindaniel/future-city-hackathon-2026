@@ -3,10 +3,11 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { validateOffer } from "../../ingestion/offers.ts";
-import { importHdfSource, parseHdfCourseFeed } from "../../ingestion/providers/hdf.ts";
+import { importHdfSource, importHdfSources, parseHdfCourseFeed } from "../../ingestion/providers/hdf.ts";
 import { parseSourceConfig, type HdfSourceConfig } from "../../ingestion/source-config.ts";
 
 const fixturePath = fileURLToPath(new URL("../fixtures/hdf-courses.json", import.meta.url));
+const childrenFixturePath = fileURLToPath(new URL("../fixtures/hdf-children-courses.json", import.meta.url));
 const importedAt = "2026-11-13T20:00:00.000Z";
 const source: HdfSourceConfig = {
   id: "hdf-digital-family-workshop",
@@ -51,6 +52,30 @@ test("imports Haus der Familie through an injected HTTP reader", async () => {
   });
 
   assert.equal(result.offers.length, 1);
+});
+
+test("imports relevant children and youth courses without programme false positives", async () => {
+  const json = await readFile(childrenFixturePath, "utf8");
+  const result = parseHdfCourseFeed(json, importedAt);
+
+  assert.equal(result.discoveredCount, 3);
+  assert.equal(result.childFacingCount, 3);
+  assert.deepEqual(
+    result.offers.map((offer) => offer.sourceId),
+    ["261H305008", "261H305006"],
+  );
+});
+
+test("deduplicates courses shared by multiple Haus der Familie feeds", async () => {
+  const json = await readFile(fixturePath, "utf8");
+  const secondSource: HdfSourceConfig = { ...source, id: "hdf-children-youth", url: `${source.url}&fachb=3` };
+  const result = await importHdfSources([source, secondSource], {
+    importedAt,
+    fetchText: async () => json,
+  });
+
+  assert.equal(result.offers.length, 1);
+  assert.equal(result.duplicateCount, 1);
 });
 
 test("rejects non-official Haus der Familie source hosts", () => {

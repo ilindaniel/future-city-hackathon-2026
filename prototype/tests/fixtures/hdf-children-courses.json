@@ -1,0 +1,65 @@
+[
+  {
+    "knr": "261H305008",
+    "haupttitel": "KinderFerienBox: Wie funktionieren Roboter und wie werden sie programmiert?",
+    "hauptuntertitel": "Für Kinder von 6 bis 10 Jahren ohne Begleitperson",
+    "web_info": "Kinder planen mit Robotern Wege, geben Befehle und verbessern ihre Ideen.",
+    "inhalt": "Kinder planen mit Robotern Wege, geben Befehle und verbessern ihre Ideen.",
+    "ort": "Heilbronn, Haus der Familie",
+    "gebnorm": "25.00",
+    "status": "1",
+    "termine": [
+      {
+        "tag": "2027-02-08",
+        "zeitvon": "09:00:00",
+        "zeitbis": "12:00:00",
+        "termin_status": "normale Planung"
+      }
+    ],
+    "kategorien": {
+      "1282": "Schulkinder & Jugendliche (ab 6 Jahren)"
+    }
+  },
+  {
+    "knr": "261H305006",
+    "haupttitel": "KinderFerienBox: Programmieren Lernen - Scratch",
+    "hauptuntertitel": "Für Kinder von 8 bis 12 Jahren ohne Begleitperson",
+    "web_info": "Kinder lernen die visuelle Programmiersprache Scratch kennen.",
+    "inhalt": "Kinder lernen die visuelle Programmiersprache Scratch kennen.",
+    "ort": "Heilbronn, Haus der Familie",
+    "gebnorm": "25.00",
+    "status": "1",
+    "termine": [
+      {
+        "tag": "2027-02-09",
+        "zeitvon": "09:00:00",
+        "zeitbis": "12:00:00",
+        "termin_status": "normale Planung"
+      }
+    ],
+    "kategorien": {
+      "1282": "Schulkinder & Jugendliche (ab 6 Jahren)"
+    }
+  },
+  {
+    "knr": "261H303010",
+    "haupttitel": "Flughafen Stuttgart - Entdeckertour",
+    "hauptuntertitel": "Für Kinder ab 5 Jahren mit Begleitperson",
+    "web_info": "Auf dem Programm stehen eine Rundfahrt, eine Führung und ein Film.",
+    "inhalt": "Auf dem Programm stehen eine Rundfahrt, eine Führung und ein Film.",
+    "ort": "Flughafen Stuttgart",
+    "gebnorm": "18.00",
+    "status": "1",
+    "termine": [
+      {
+        "tag": "2027-03-01",
+        "zeitvon": "10:00:00",
+        "zeitbis": "12:00:00",
+        "termin_status": "normale Planung"
+      }
+    ],
+    "kategorien": {
+      "199": "Kindergartenkind (3-6 Jahre)"
+    }
+  }
+]

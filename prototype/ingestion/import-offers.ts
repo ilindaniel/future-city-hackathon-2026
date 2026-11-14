@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import { assertUniqueOffers, filterUpcomingOffers, type Offer, type OfferCatalog } from "./offers.ts";
 import { importAimSources } from "./providers/aim.ts";
 import { importExperimentaSource } from "./providers/experimenta.ts";
-import { importHdfSource } from "./providers/hdf.ts";
+import { importHdfSources } from "./providers/hdf.ts";
 import { loadSourceConfig } from "./source-config.ts";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -45,12 +45,12 @@ async function main() {
   }
 
   const hdfSources = enabledSources.filter((source) => source.provider === "hdf");
-  for (const source of hdfSources) {
-    console.log(`[offers] importing Haus der Familie feed ${source.id}`);
-    const hdfResult = await importHdfSource(source, { importedAt: generatedAt });
+  if (hdfSources.length > 0) {
+    console.log(`[offers] importing ${hdfSources.length} Haus der Familie feeds`);
+    const hdfResult = await importHdfSources(hdfSources, { importedAt: generatedAt });
     offers.push(...hdfResult.offers);
     console.log(
-      `[offers] found ${hdfResult.discoveredCount} Haus der Familie courses, ${hdfResult.childFacingCount} child-facing courses, and excluded ${hdfResult.skippedCount} unrelated courses`,
+      `[offers] found ${hdfResult.discoveredCount} Haus der Familie course entries, ${hdfResult.childFacingCount} child-facing entries, excluded ${hdfResult.skippedCount} unrelated entries, and merged ${hdfResult.duplicateCount} duplicate offers`,
     );
   }
 

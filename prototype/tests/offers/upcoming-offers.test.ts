@@ -26,6 +26,11 @@ test("keeps AI, robotics, and making as separate topics", () => {
   assert.deepEqual(classifyOfferTopics("Maker Faire und Solarmobilbauwettbewerb"), ["making"]);
 });
 
+test("does not treat an ordinary programme as coding", () => {
+  assert.deepEqual(classifyOfferTopics("Auf dem Programm stehen eine Führung und ein Film"), []);
+  assert.deepEqual(classifyOfferTopics("Programmieren lernen mit Scratch"), ["coding"]);
+});
+
 test("removes past dates and keeps future dates on a recurring offer", () => {
   const offer: Offer = {
     ...baseOffer,

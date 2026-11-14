@@ -39,6 +39,12 @@
       "provider": "hdf",
       "enabled": true,
       "url": "https://hdf-hn.de/kufer-api.php?keyword=digitale%20medien&keyword_relation=or&kategorie_id=0&page=1&limit=120&endpoint=kurse"
+    },
+    {
+      "id": "hdf-children-youth",
+      "provider": "hdf",
+      "enabled": true,
+      "url": "https://hdf-hn.de/kufer-api.php?fachb=3&page=1&limit=120&endpoint=kurse"
     }
   ]
 }

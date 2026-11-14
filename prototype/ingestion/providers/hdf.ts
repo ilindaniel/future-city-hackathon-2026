@@ -168,3 +168,42 @@ export async function importHdfSource(
   const importedAt = options.importedAt ?? new Date().toISOString();
   return parseHdfCourseFeed(await fetchText(source.url), importedAt);
 }
+
+export async function importHdfSources(
+  sources: readonly HdfSourceConfig[],
+  options: { fetchText?: FetchText; importedAt?: string } = {},
+) {
+  const importedAt = options.importedAt ?? new Date().toISOString();
+  const offers = new Map<string, Offer>();
+  let discoveredCount = 0;
+  let childFacingCount = 0;
+  let skippedCount = 0;
+  let duplicateCount = 0;
+
+  for (const source of sources) {
+    const result = await importHdfSource(source, { ...options, importedAt });
+    discoveredCount += result.discoveredCount;
+    childFacingCount += result.childFacingCount;
+    skippedCount += result.skippedCount;
+
+    for (const offer of result.offers) {
+      const existingOffer = offers.get(offer.sourceId);
+      if (!existingOffer) {
+        offers.set(offer.sourceId, offer);
+        continue;
+      }
+      if (JSON.stringify(existingOffer) !== JSON.stringify(offer)) {
+        throw new Error(`Conflicting Haus der Familie course ${offer.sourceId}`);
+      }
+      duplicateCount += 1;
+    }
+  }
+
+  return {
+    offers: [...offers.values()],
+    discoveredCount,
+    childFacingCount,
+    skippedCount,
+    duplicateCount,
+  };
+}
