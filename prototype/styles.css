@@ -68,8 +68,69 @@ img {
   position: fixed;
   inset: 0;
   z-index: var(--layer-scene);
-  background: var(--sky) url("assets/scene.jpg") var(--scene-focus) / var(--scene-size) no-repeat;
+  overflow: hidden;
+  background: var(--sky);
+}
+
+/*
+ * All layers share one box with the art's proportions. The box is pinned to
+ * the bottom of the screen and is at least big enough to cover it; app.js
+ * makes it taller when the grass has to reach further up (--scene-height).
+ */
+.scene__world {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: var(--scene-height, max(100dvh, calc(100vw / var(--scene-ratio))));
+  aspect-ratio: var(--scene-ratio);
+  transform: translateX(-50%);
+}
+
+.scene__layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
   image-rendering: pixelated;
+  user-select: none;
+}
+
+/* The moving layers are drawn a little larger, so their edges never show. */
+.scene__clouds {
+  opacity: 0.88;
+  animation: scene-clouds var(--time-clouds) steps(9, end) infinite alternate;
+}
+
+.scene__grass {
+  transform-origin: 50% 100%;
+  animation: scene-grass var(--time-grass) steps(2, end) infinite alternate;
+}
+
+@keyframes scene-clouds {
+  from {
+    transform: translateX(-8px) scale(1.025);
+  }
+  to {
+    transform: translateX(12px) scale(1.025);
+  }
+}
+
+@keyframes scene-grass {
+  from {
+    transform: translateX(-2px) scale(1.025) skewX(-0.12deg);
+  }
+  to {
+    transform: translateX(2px) scale(1.025) skewX(0.12deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene__clouds,
+  .scene__grass,
+  .bobby__sprite {
+    animation: none;
+  }
 }
 
 body[data-world="calm"] .scene {
@@ -159,10 +220,8 @@ body[data-world="calm"] .scene {
 /* ---------- Pressable things (section 7) ---------- */
 
 .button,
-.choice,
 .chip,
-.icon-button,
-.heart {
+.icon-button {
   border: 0;
   transition:
     transform var(--time-fast) var(--ease-out),
@@ -212,7 +271,6 @@ body[data-world="calm"] .scene {
 
 @media (hover: hover) {
   .button:hover,
-  .choice:hover,
   .chip:hover,
   .icon-button:hover {
     transform: translateY(-1px);
@@ -220,17 +278,14 @@ body[data-world="calm"] .scene {
 }
 
 .button:active,
-.choice:active,
 .icon-button:active {
   transform: translateY(var(--px));
   box-shadow: inset 0 calc(var(--edge-pressed) * -1) 0 var(--edge-color, var(--glass-edge));
 }
 
 .button:focus-visible,
-.choice:focus-visible,
 .chip:focus-visible,
 .icon-button:focus-visible,
-.heart:focus-visible,
 .field__input:focus-visible {
   outline: none;
   box-shadow: var(--focus);
@@ -317,9 +372,8 @@ body[data-world="calm"] .scene {
   background: var(--cream);
 }
 
-.role__picture img {
-  width: 54%; /* the duck is taller than wide; this keeps it inside the square */
-  height: auto;
+.role__picture .bobby {
+  height: 72%;
 }
 
 .role .button {
@@ -331,7 +385,146 @@ body[data-world="calm"] .scene {
 /* ---------- Child screen ---------- */
 
 .kid {
-  min-height: 100dvh; /* Bobby and the button under it sit at the bottom edge */
+  min-height: 100dvh;
+  max-width: var(--wide);
+}
+
+/*
+ * Everything on the child screen gathers around Bobby at the bottom:
+ * the bubble above him, the buttons under him, the event he is showing next
+ * to him (above the bubble on a phone, where there is no room at the side).
+ */
+.cluster {
+  margin-top: auto;
+  width: 100%;
+  max-width: var(--column);
+  margin-inline: auto;
+  display: grid;
+  grid-template-areas:
+    "secret"
+    "speech"
+    "stage"
+    "controls";
+  gap: var(--space-3);
+}
+
+.secret {
+  grid-area: secret;
+}
+
+.speech {
+  grid-area: speech;
+}
+
+.stage {
+  grid-area: stage;
+}
+
+.controls {
+  grid-area: controls;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.controls .button {
+  flex: 1 1 0;
+}
+
+.button__icons {
+  display: flex;
+  gap: var(--space-1);
+}
+
+@media (min-width: 900px) {
+  .cluster {
+    max-width: none;
+    grid-template-columns: 1fr var(--column) 1fr;
+    grid-template-areas:
+      ". speech ."
+      ". stage secret"
+      ". controls .";
+    column-gap: var(--space-5);
+  }
+
+  /* Bobby presents the event: it stands beside him, level with his feet. */
+  .secret {
+    align-self: end;
+    justify-self: start;
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+.secret__mark {
+  align-self: start;
+}
+
+/* Status line under Bobby: talking or listening. It takes a row to itself. */
+.ear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  margin: 0 30%;
+  flex: 1 0 40%;
+  padding: var(--space-1) var(--space-3);
+  border: 0;
+  background: var(--glass-solid);
+  font-size: var(--text-small);
+  font-weight: 600;
+  clip-path: var(--corner-small);
+}
+
+.ear--listening {
+  background: var(--bobby);
+  color: var(--on-dark);
+}
+
+.ear:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+.mic__bars {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--px);
+  height: 20px;
+}
+
+.mic__bars i {
+  display: block;
+  width: calc(var(--px) * 1.5);
+  height: 100%;
+  background: currentColor;
+  transform-origin: bottom;
+  animation: mic-step 600ms var(--ease-pixel) infinite alternate;
+}
+
+.mic__bars i:nth-child(2) {
+  animation-delay: -200ms;
+}
+
+.mic__bars i:nth-child(3) {
+  animation-delay: -400ms;
+}
+
+@keyframes mic-step {
+  from {
+    transform: scaleY(0.25);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mic__bars i {
+    animation: none;
+  }
 }
 
 .bubble {
@@ -387,10 +580,67 @@ body[data-world="calm"] .scene {
   min-height: var(--bobby-height);
 }
 
-/* Bobby is a duck on the near bank: clearly smaller than the buildings behind. */
+/*
+ * Bobby is a duck on the near bank: clearly smaller than the buildings behind.
+ * The sprite files are square with empty space around the duck, so the box
+ * shows only the part with the duck in it. The numbers are that part's place
+ * in the 1254px sprite: 290 to 889 across, 215 to 1060 down.
+ */
 .bobby {
+  display: block;
+  position: relative;
   height: var(--bobby-height);
-  width: auto;
+  aspect-ratio: 599 / 845;
+  overflow: hidden;
+}
+
+.bobby__sprite {
+  position: absolute;
+  left: calc(-290 / 599 * 100%);
+  top: calc(-215 / 845 * 100%);
+  width: calc(1254 / 599 * 100%);
+  max-width: none;
+  image-rendering: pixelated;
+  animation: bobby-bob var(--time-bob) steps(2, end) infinite alternate;
+}
+
+/* The blink sprite flashes over the standing one for a moment every few seconds. */
+.bobby__sprite--blink {
+  opacity: 0;
+  animation:
+    bobby-bob var(--time-bob) steps(2, end) infinite alternate,
+    bobby-blink var(--time-blink) steps(1, end) infinite;
+}
+
+.bobby__sprite--talk {
+  display: none;
+}
+
+.bobby.is-talking .bobby__sprite--talk {
+  display: block;
+}
+
+.bobby.is-talking .bobby__sprite--blink {
+  display: none;
+}
+
+@keyframes bobby-bob {
+  to {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes bobby-blink {
+  0%,
+  92%,
+  96%,
+  100% {
+    opacity: 0;
+  }
+  93%,
+  95% {
+    opacity: 1;
+  }
 }
 
 .bobby-button {
@@ -450,114 +700,9 @@ body[data-world="calm"] .scene {
   color: var(--on-dark);
 }
 
-/* Microphone: four states, each with its own picture, colour and text. */
-.mic[data-state="listening"] {
-  --fill: var(--bobby);
-  --edge-color: var(--bobby-edge);
-  --text: var(--on-dark);
-}
-
-.mic[data-state="thinking"],
-.mic[data-state="speaking"] {
-  --fill: var(--surface-raised);
-  --edge-color: var(--line);
-}
-
-.mic__bars {
-  display: none;
-  align-items: flex-end;
-  gap: var(--px);
-  height: 24px;
-}
-
-.mic__bars i {
-  display: block;
-  width: calc(var(--px) * 1.5);
-  height: 100%;
-  background: currentColor;
-  transform-origin: bottom;
-  animation: mic-step 600ms var(--ease-pixel) infinite alternate;
-}
-
-.mic__bars i:nth-child(2) {
-  animation-delay: -200ms;
-}
-
-.mic__bars i:nth-child(3) {
-  animation-delay: -400ms;
-}
-
-.mic[data-state="listening"] .mic__bars,
-.mic[data-state="thinking"] .mic__bars {
-  display: flex;
-}
-
-.mic[data-state="listening"] .mic__icons,
-.mic[data-state="thinking"] .mic__icons {
-  display: none;
-}
-
-.mic[data-state="thinking"] .mic__bars i {
-  height: calc(var(--px) * 1.5);
-  align-self: center;
-  animation-name: mic-dot;
-}
-
-@keyframes mic-step {
-  from { transform: scaleY(0.25); }
-  to { transform: scaleY(1); }
-}
-
-@keyframes mic-dot {
-  from { opacity: 0.25; }
-  to { opacity: 1; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mic__bars i {
-    animation: none;
-  }
-}
-
-/* Four picture choices */
-.choices {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-2);
-}
-
-.choice {
-  display: grid;
-  justify-items: center;
-  align-content: center;
-  gap: var(--space-1);
-  min-height: var(--tap-kid);
-  padding: var(--space-2) var(--space-1) calc(var(--space-2) + var(--px));
-  font-size: var(--text-small);
-  font-weight: 600;
-  line-height: 1.2;
-  text-align: center;
-}
-
 /* ---------- Event cards ---------- */
 
-.events {
-  display: flex;
-  gap: var(--space-3);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  margin-inline: calc(var(--space-4) * -1);
-  padding-inline: var(--space-4);
-  scrollbar-width: none;
-}
-
-.events::-webkit-scrollbar {
-  display: none;
-}
-
 .event {
-  flex: 0 0 86%;
-  scroll-snap-align: center;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -584,24 +729,6 @@ body[data-world="calm"] .scene {
   flex-wrap: wrap;
   gap: var(--space-1);
   margin-top: var(--space-1);
-}
-
-.heart {
-  display: grid;
-  place-items: center;
-  width: var(--tap-kid);
-  height: var(--tap-kid);
-  background: var(--surface-raised);
-  clip-path: var(--corner-small);
-}
-
-.heart .icon {
-  width: 36px;
-  height: 36px;
-}
-
-.heart[aria-pressed="true"] {
-  box-shadow: inset 0 0 0 var(--px) var(--like);
 }
 
 /* Parent version of the card */
@@ -775,7 +902,416 @@ body[data-world="calm"] .scene {
     grid-template-columns: 1fr;
   }
 
-  .event {
-    flex-basis: 94%;
+}
+
+/* ---------- Calm parent screens (DESIGN.md, section 9) ----------
+ * Parents get the same colours and type sizes as children, without the game
+ * look: rounded corners instead of stepped ones, thin lines instead of hard
+ * edges, no pixel font, no pixel pictures, nothing that bounces.
+ */
+
+.calm .wordmark,
+.calm .title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.calm .panel,
+.calm .wordmark {
+  clip-path: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: none;
+}
+
+.calm .button,
+.calm .icon-button,
+.calm .chip,
+.calm .field__input,
+.calm .tag {
+  clip-path: none;
+  border-radius: var(--radius-small);
+  box-shadow: none;
+}
+
+.calm .button {
+  min-height: var(--tap);
+  padding: var(--space-3) var(--space-5);
+  transition: filter var(--time-fast) var(--ease-out);
+}
+
+.calm .button--quiet {
+  background: transparent;
+  border: 1px solid var(--line);
+}
+
+.calm .icon-button,
+.calm .chip,
+.calm .field__input {
+  border: 1px solid var(--line);
+  background: var(--surface-raised);
+}
+
+.calm .chip {
+  border-radius: 999px;
+}
+
+.calm .chip[aria-pressed="true"] {
+  border-color: var(--bobby);
+  background: var(--bobby);
+}
+
+.calm .tag {
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+/* No lifting or sinking here: a pressed button just darkens. */
+.calm .button:hover,
+.calm .button:active,
+.calm .icon-button:hover,
+.calm .icon-button:active,
+.calm .chip:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.calm .button:hover,
+.calm .icon-button:hover,
+.calm .chip:hover {
+  filter: brightness(0.96);
+}
+
+.calm .button:active {
+  filter: brightness(0.9);
+}
+
+.calm .button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: none;
+}
+
+/* Rounded corners clip nothing, so the focus ring can sit outside the box. */
+.calm .button:focus-visible,
+.calm .icon-button:focus-visible,
+.calm .chip:focus-visible,
+.calm .field__input:focus-visible,
+.google:focus-visible,
+.check input:focus-visible {
+  box-shadow: none;
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.calm .event--parent {
+  grid-template-columns: 1fr;
+}
+
+/* ---------- Sign-in and consent ---------- */
+
+.auth {
+  display: grid;
+  gap: var(--space-4);
+  margin-block: auto;
+  padding: var(--space-5);
+}
+
+.auth__list {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding-left: var(--space-5);
+}
+
+.auth__note {
+  font-size: var(--text-small);
+  text-align: center;
+}
+
+.auth__error {
+  padding: var(--space-3);
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-small);
+  color: var(--danger);
+}
+
+.auth__facts {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+}
+
+.auth__facts dt {
+  margin-top: var(--space-2);
+  font-weight: 600;
+}
+
+.auth__facts dd {
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+/* Google's own button: white, grey line, their logo, their wording. */
+.google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: var(--tap);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--google-line);
+  border-radius: var(--radius-small);
+  background: var(--google-surface);
+  color: var(--google-text);
+  font: 500 var(--text-body) / 1.2 Roboto, var(--font-body);
+}
+
+.google:hover {
+  filter: brightness(0.97);
+}
+
+.google:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.google__mark {
+  display: grid;
+}
+
+.google__logo {
+  width: 20px;
+  height: 20px;
+}
+
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-small);
+  cursor: pointer;
+}
+
+.check input {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  accent-color: var(--bobby);
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-small);
+  color: var(--ink-muted);
+}
+
+.account__avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bobby);
+  color: var(--on-dark);
+  font-weight: 600;
+}
+
+.account--bar {
+  min-width: 0;
+}
+
+.account__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* On a phone the address would crowd the bar; the avatar is enough. */
+@media (max-width: 639px) {
+  .account__name {
+    display: none;
   }
+}
+
+/* ---------- Child: all places ---------- */
+
+.browse__title {
+  padding: var(--space-3) var(--space-4);
+  text-align: center;
+}
+
+.browse__list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.heart {
+  display: grid;
+  place-items: center;
+  width: var(--tap-kid);
+  height: var(--tap-kid);
+  border: 0;
+  background: var(--surface-raised);
+  clip-path: var(--corner-small);
+}
+
+.heart .icon {
+  width: 36px;
+  height: 36px;
+}
+
+.heart[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 var(--px) var(--like);
+}
+
+.heart:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+/* ---------- Parent area layout ---------- */
+
+.parent-layout {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.parent-main {
+  display: grid;
+  gap: var(--space-6);
+  min-width: 0;
+}
+
+.parent-side {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+}
+
+/* On a phone the invite comes first; on a computer it is a side column that stays in view. */
+@media (max-width: 899px) {
+  .parent-side {
+    order: -1;
+  }
+}
+
+@media (min-width: 900px) {
+  .parent-layout {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: start;
+  }
+
+  .parent-side {
+    position: sticky;
+    top: var(--space-4);
+  }
+
+  .parent-main .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.calm .invite {
+  display: grid;
+  gap: var(--space-3);
+  justify-content: stretch;
+}
+
+.invite__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.invite__actions .button {
+  flex: 1 1 auto;
+}
+
+.invite__status {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--line);
+  color: var(--ink-muted);
+  font-size: var(--text-small);
+}
+
+.note {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  font-size: var(--text-small);
+}
+
+.note__title {
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+
+.section__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+/* Parent cards: facts in labelled rows, so a date can be found at a glance. */
+.calm .event--parent {
+  align-content: start;
+  gap: var(--space-4);
+}
+
+.calm .event--parent .event__facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin: 0;
+  color: var(--ink);
+  font-size: var(--text-small);
+}
+
+.event__facts dt {
+  color: var(--ink-muted);
+}
+
+.event__facts dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+.calm .event--parent .button {
+  align-self: end;
+}
+
+.event--chosen {
+  border-color: var(--bobby) !important;
+}
+
+.event__badge {
+  margin-bottom: var(--space-1);
+  color: var(--bobby);
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+
+/* The invite QR sheet, when a parent opens it. */
+.sheet.calm {
+  clip-path: none;
+  border-radius: var(--radius);
+}
+
+/* A tag that needs attention: fully booked, waiting list. */
+.tag--alert,
+.calm .tag--alert {
+  background: var(--surface-raised);
+  border: 1px solid var(--danger);
+  color: var(--danger);
 }

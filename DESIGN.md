@@ -39,11 +39,11 @@ These were chosen by the author on 2026-11-13.
 | 5 | Fonts | Pixel font for short headings, rounded sans for everything else |
 | 6 | Palette | Taken from the scene and the duck; beak orange is the action colour |
 | 7 | Main button | Pressable, with a hard bottom edge that shrinks when pressed |
-| 8 | Parent area | Same tokens, calm plain background, no scene |
-| 9 | Layout | Child screens are one phone-width column on every device; the scene fills the screen behind it |
+| 8 | Parent area | Same colours and type sizes, but calm: rounded corners, thin lines, no pixel font, no pixel pictures, no scene. Behind Google sign-in. |
+| 9 | Layout | Everything on a child screen gathers around Bobby at the bottom. On a phone it stacks; on a computer the event Bobby shows stands beside him. |
 | 10 | Scene on phones | A separate portrait version (not drawn yet, see section 11) |
 | 11 | Duck position | Centred, standing on the grass, with the one button directly under it |
-| 12 | Duck speech | Speech bubble as subtitles, shown while Bobby has something to say |
+| 12 | Duck speech | Bobby speaks first. The bubble is his subtitles. |
 | 13 | Entry | Two large cards: "I'm a kid" and "I'm a grown-up" |
 | 14 | Cursor trail | Child screens only |
 | 15 | Token format | CSS variables |
@@ -127,6 +127,7 @@ Rules:
 | `--wide` | 1040px | Largest width of the parent area |
 | `--corner` | stepped, 2 × `--px` | Every glass panel and button |
 | `--corner-small` | stepped, 1 × `--px` | Tags, chips, small controls |
+| `--radius`, `--radius-small` | 14px, 8px | Parent screens only |
 
 Corners are stepped, never round. A stepped corner is cut with `clip-path`, so
 two side effects apply to every component:
@@ -182,34 +183,77 @@ effect in the system; there are no soft shadows.
 Rules:
 
 * Animate position, scale and opacity only.
-* The scene and the duck are animated as described in section 11. Interface
-  motion and world motion are separate: the interface never moves the world.
-* Nothing loops for attention, with one exception: the sleep badge bobs slowly
-  until Bobby is woken. No rewards for coming back daily, no streaks.
+* The world moves on its own slow loops: clouds 18s, grass 3.2s,
+  Bobby's bob 2.8s, all stepped. Interface motion and world motion are
+  separate: the interface never moves the world, and the world does not react
+  to the pointer.
+* Nothing loops for attention, with one exception: the "Psst!" badge bobs slowly
+  until Bobby is tapped. No rewards for coming back daily, no streaks.
 * With "reduce motion" switched on, everything appears instantly and the
   cursor trail is off.
 
 ## 9. Layout
 
-**Child screens.** One column, `--column` wide, centred. The scene fills the
-whole screen behind it. From top to bottom:
+**Child screens.** The scene fills the screen. The top bar holds the wordmark,
+the language switch and "again". Everything else gathers around Bobby at the
+bottom of the screen, so the sky stays empty and the eye goes to the duck:
 
-1. Top bar: wordmark, language switch, way back.
-2. Speech bubble. Hidden until Bobby speaks.
-3. Found events and the "show my grown-up" button, once there are any.
-4. Bobby, centred, standing on the grass near the bottom edge.
-5. One button, directly under Bobby.
+1. The speech bubble, directly above Bobby, with its tail pointing at him.
+2. Bobby, centred, standing on the grass.
+3. The buttons, directly under Bobby.
+4. The event Bobby is showing. On a phone it sits above the bubble. From
+   900px it stands to the right of Bobby, level with his feet, as if he were
+   presenting it.
 
-Bobby and the button under it never move. Everything that comes and goes sits
-above Bobby, over the sky and the water. This keeps Bobby on the grass and the
-scene at one size through the whole conversation.
-
-Bobby is `--bobby-height` tall (24% of the screen height, 200px at most): a
-duck on the near bank, clearly smaller than the buildings on the far one.
+Bobby never moves. He is `--bobby-height` tall (24% of the screen height,
+200px at most): a duck on the near bank, clearly smaller than the buildings
+on the far one.
 
 **Parent screens.** `--surface` background, no scene, no cursor trail. One
 column on a phone; the catalogue becomes two columns from 640px and three from
 960px, up to `--wide`.
+
+Parents are adults doing a chore, so their screens drop the game look. They
+keep the palette, the type sizes and the spacing, and change the rest:
+
+| | Child screens | Parent screens |
+|---|---|---|
+| Corners | Stepped | Rounded: `--radius` for panels, `--radius-small` for controls |
+| Edges | Hard bottom edge on anything pressable | A thin `--line` border; buttons are flat |
+| Press feedback | The button sinks | The button darkens |
+| Titles | Pixel font | Body font, weight 600 |
+| Pictures | Pixel pictures | None; a text tag names the topic |
+| Focus ring | Inside the box | Outside the box, 3px ink |
+
+The parent area is built around what the parent came to do:
+
+* **What the child chose comes first**, with one sentence naming the child's
+  interests. These cards have a green border, the line "Chosen by your
+  child" and the green registration button.
+* **The invite lives in a side column** that stays in view on a computer and
+  comes first on a phone: the link, "Copy link", "Show QR code", and one
+  line of status (not opened yet, or the child has talked to Bobby).
+* **A short note says what the parent sees**: only hearts, nothing the child
+  said.
+* **Every card lists the same four facts in labelled rows**: when, where,
+  age, price. A parent comparing offers should never have to read a sentence.
+* **The catalogue shows how many offers match** the search and filters.
+
+**Parent sign-in.** The parent area is never shown without signing in. Choosing
+"I'm a grown-up" leads through three screens:
+
+1. **Sign in.** What the parent gets, in three lines, and the Google button.
+   The button follows Google's rules: white, grey line, Google's logo, the
+   words "Sign in with Google". While Google is open it reads "Continuing to
+   Google…" and cannot be pressed twice. A cancelled sign-in shows one line
+   of red text above the button.
+2. **Consent.** Shown once after the first sign-in. It names the account,
+   says what is stored and what is not, and has one checkbox: "I am the
+   parent or guardian and I agree." The button stays disabled until it is
+   ticked. "Cancel" signs the parent out again.
+3. **Parent area.** The account and "Sign out" sit in the top bar.
+
+A parent who is already signed in skips straight to step 3.
 
 **Scene.** It always covers the screen and is pinned to the bottom edge. The
 grass must reach at least 45% of Bobby's height above Bobby's feet, so the
@@ -230,77 +274,118 @@ Each one exists in the prototype under the class shown.
 | Speech bubble | `.bubble` | Glass panel with a stepped tail pointing at Bobby. Holds the "AI helper" tag and the spoken text. |
 | AI tag | `.tag--ai` | Always visible while Bobby speaks. Bobby also says it in the first sentence. |
 | Bobby | `.bobby` | The duck image. Pixel scaling. Never cropped, never recoloured. |
-| Picture choice | `.choice` | Square glass button: pixel picture, short label. Four at a time. Shown only when Bobby cannot hear the child. |
+| Secret card | `.secret` | The one event Bobby is showing: topic picture, title, age and place. A small heart appears on it once liked. |
+| All places | `.browse` | Child list of every offer: glass cards with pixel picture, title, age, place and a heart button |
+| Heart | `.heart` | Toggle on the "all places" cards. Empty outline, or filled `--like` with a frame. |
+| Reaction buttons | `.controls` | "What else?" (cream, arrow) and "Cool!" (orange, heart). Never more than two. |
 | Main button | `.button` | Orange, one per screen |
 | Quiet button | `.button--quiet` | Cream, for everything else |
 | Green button | `.button--bobby` | Confirming actions in the parent area |
 | Icon button | `.icon-button` | Square, `--tap` or larger, always has a spoken label |
-| Conversation button | `.mic` | The one button under Bobby. Five phases, see below. |
-| Sleep badge | `.sleep-badge` | Small glass plate above Bobby while asleep: muted speaker and "z z z" |
-| Event card, child | `.event` | Topic picture, title, two tags, heart |
+| Status line | `.ear` | "I'm talking" or "I'm listening", above the buttons |
+| Psst badge | `.sleep-badge` | Small glass plate above Bobby before the first tap: speaker picture and "Psst!" |
 | Event card, parent | `.event--parent` | Adds institution, date, place, age, price and a registration button |
-| Heart | `.heart` | Toggle. Empty outline, or filled `--like` with a frame. |
 | Tag | `.tag` | Topic, age, institution. Not tappable. |
 | Chip | `.chip` | Tappable filter. Selected is green with a tick. |
 | Search field | `.field` | Label above, never placeholder-only |
 | Sheet | `.sheet` | Opens over a scrim. Used for "show my grown-up" and for the privacy note. |
 | QR block | `.qr` | Square code on white with a quiet margin |
 | Role card | `.role` | Entry screen. Picture block on top, button below. |
+| Google button | `.google` | Google's own sign-in button. Do not restyle it. |
+| Consent box | `.check` | One checkbox with its sentence, in a bordered box so the whole line is tappable |
+| Account | `.account` | Round initial and e-mail address; the address is hidden on a phone |
 | Notice | `.notice` | One line of plain text for empty, loading and error states |
 | Cursor trail | `.cursor-trail` | Child screens, mouse only. White squares at 80% opacity with grain, like chips of frosted glass. The system cursor is hidden while it runs; the newest trail square stays lit under a resting pointer. Values in `cursor-trail/cursor-trail.css`. |
 
-**Conversation phases.** The child screen is always in exactly one phase. The
-button under Bobby shows it by picture, colour and text together.
+**Conversation.** Bobby leads. A child who was told to open the app does not
+know what to ask for, so Bobby never opens with a question about the child's
+interests and never shows a menu of topics. He offers something, and the
+child reacts.
 
-| Phase | What the child sees | Button (EN / DE) |
+| Phase | What happens | Under Bobby |
 |---|---|---|
-| Asleep | Bobby with a "z z z" badge and a muted-speaker picture. No bubble. | Orange, speaker and microphone pictures: Wake Bobby / Bobby wecken |
-| Speaking | Bubble with Bobby's words, read aloud | Cream, speaker picture: I'm talking / Ich spreche |
-| Listening | Bubble keeps the question | Green, three bars stepping: I'm listening / Ich höre zu |
-| Thinking | Bubble keeps the question | Cream, three dots stepping: Let me think / Ich überlege |
-| Results | Event cards above Bobby | Orange, microphone picture: Tap and talk / Tippen und sprechen |
+| Idle | Only Bobby, a "Psst!" badge and one button. Nothing is said: a browser plays no sound before the first tap. | Orange button with speaker and microphone pictures: "What does Bobby know?" |
+| Hello | Bobby introduces himself, says he is a computer duck and not a person, and promises a secret place in Heilbronn. | "Show me!" |
+| Secret | Bobby shows one event and pitches it in one or two short lines. | "What else?" and "Cool!" (with a heart) |
+| End | Bobby wraps up. | "Again", and "Show my grown-up" if anything got a heart |
 
-Why Bobby starts asleep: a browser plays no sound and opens no microphone
-until the person taps something. The first tap therefore has one job, and the
-screen shows nothing else that could be tapped. That tap switches sound on,
-asks for the microphone, and Bobby greets the child. Tapping Bobby does the
-same as tapping the button.
+Rules:
 
-**No microphone.** If the microphone is refused or missing, Bobby says so, the
-button under Bobby is replaced by four picture choices, and the pictures carry
-the conversation. Picture choices are shown in this case only. On a screen
-where Bobby can hear, they are noise.
+* With Bobby, one event at a time. Never a list, never a carousel.
+* A child who wants to look around alone can: "All places" in the top bar
+  opens every offer as a plain list of cards with hearts. It is a side door.
+  Bobby stays the main way in, and the conversation is kept for the way back.
+* At most two buttons, and they are reactions ("cool", "what else"), not
+  categories.
+* "Cool!" is the heart. It saves the event for the parent, and Bobby says so
+  the first time.
+* A status line above the buttons shows "I'm talking" or "I'm listening".
+* The first tap switches sound on and asks for the microphone. Tapping Bobby
+  does the same as tapping the button.
+* If the microphone is refused or missing, Bobby says "I can't hear you right
+  now. Just tap." and the same buttons carry the conversation. Nothing else
+  changes.
 
 **Text.** The bubble is Bobby's subtitles: it shows only what Bobby is saying
-aloud. It stays because of noisy rooms, muted devices and children who hear
-poorly. Nothing on a child screen has to be read in order to continue.
+aloud. Nothing on a child screen has to be read in order to continue.
 
 **Icons.** Drawn on a 12 × 12 grid with a dark outline, in the palette of
 section 3, and scaled by whole numbers only. Never mix them with a smooth icon
 set on child screens. The parent area may use plain line icons for utility
 actions such as copy and search.
 
-## 11. Assets
+## 11. Assets and data
 
-| Asset | State today | Needed |
+The scene art, the duck sprites and the offer catalogue come from the team's
+app on the `primary-source` branch and live in `prototype/public/`.
+
+| Asset | File | State |
 |---|---|---|
-| Scene, landscape | 1280 × 720 JPEG, not a true pixel grid | PNG or lossless WebP on a real pixel grid, animated version from the team |
-| Scene, portrait | Does not exist | A tall version, about 720 × 1280, same palette |
-| Duck | JPEG on white; a cut-out PNG was made for the prototype and has rough edges | Transparent PNG or sprite sheet from the team, same pixel size as the scene |
+| Scene background | `assets/heilbronn-pixel-background.png`, 1672 × 941 | In use. Landscape only. |
+| Clouds | `assets/heilbronn-pixel-clouds.png` | In use, drifts sideways |
+| Foreground grass | `assets/heilbronn-pixel-grass.png` | In use, sways |
+| Water | None | Still. The moving light stripes were removed; a drawn water layer is still needed. |
+| Bobby | `assets/kiko-mallard.png`, `-blink.png`, `-speaking.png`, 1254 × 1254 each | In use: standing, a blink every six seconds, beak open while talking |
+| Scene, portrait | Does not exist | A tall version for phones, same palette |
+| Bobby asleep, listening | Do not exist | Two more sprites |
 | Topic pictures | 12 × 12 placeholders drawn in code | Final pixel pictures, one per topic |
+
+The sprite files are still named "kiko"; the duck is called Bobby everywhere
+a person can see.
+
+**Offers.** `public/data/offers.json` is written by the importer in
+`prototype/ingestion/` (`npm run import:offers`), which reads the sources
+listed in `prototype/config/offer-sources.json`. The page only reads the
+file. It drops dates that are over, sorts by the next date, and shows:
+
+* to the child: a shortened title (no age in brackets, no subtitle), the age
+  and who runs it;
+* to the parent: the full title, every topic, the next date and how many more
+  there are, the place, the age, the price, "fully booked" or "waiting list"
+  when known, and a button that opens the institution's own page.
+
+Bobby reveals one offer per topic, skipping offers that are full or outside
+the assumed age of 6 to 12. His line is built from the offer: its short title,
+what the topic is about, and who runs it. He does not describe what happens
+there, because the page cannot know that from a topic alone. In the product, a
+language model should write this line from the offer's description.
+
+If the file cannot be loaded, five invented offers are shown and the parent
+area says so.
 
 Rules for all pixel art:
 
 * One pixel of the duck must be the same size on screen as one pixel of the
-  scene. Today the duck's pixels are about twice as large.
+  scene.
 * Scale by whole numbers where possible and always with pixel scaling switched
   on (`image-rendering: pixelated`).
 * No JPEG. Compression smears the edges.
 * Every image has a text alternative, except the scene, which is decoration.
 
-### A living scene: what has to be delivered
+### A living scene: what is still missing
 
-The scene must look alive: clouds drift, water shimmers, grass and leaves
+Two layers move today (clouds and foreground grass). The full
+list below is what a finished scene needs. The scene must look alive: clouds drift, water shimmers, grass and leaves
 sway. One flat picture cannot do that. The scene has to arrive as separate
 layers, each with its own loop, all drawn on the same pixel grid.
 
@@ -349,18 +434,43 @@ less reliable.
 * Before the first heart, Bobby says who will see it: "Your grown-up only sees
   what you give a heart."
 
-## 13. Voice of the text
+## 13. Who Bobby is, and how he talks
 
-| | Child screens | Parent screens |
+Bobby is a mallard from the Neckar who knows things. He looks like an
+ordinary duck: no sunglasses, no costume. The cool is in how he talks. He
+is cool, a little mysterious, and on the child's side. He has been everywhere
+in Heilbronn and lets the child in on places most people do not know about.
+The child should feel that Bobby knows something they do not, and want to
+find out what.
+
+| | Bobby, on child screens | Parent screens |
 |---|---|---|
 | Who speaks | Bobby, in the first person | The product, plainly |
 | Address | "du" in German | "Sie" in German |
-| Sentence length | Up to about eight words | Normal |
-| Tone | Curious, warm, never pushy | Clear and factual |
+| Sentence length | Three to eight words | Normal |
+| Tone | Dry, confident, playful. Short sentences. A joke now and then. | Clear and factual |
 
-Bobby asks, suggests and accepts "I don't know" as an answer. Bobby does not
-praise for using the app, does not say it will miss the child, and does not
-ask the child to come back.
+How Bobby talks:
+
+* He starts. He never waits for the child to say what they want.
+* He reveals, he does not sell. "Here you build a robot. It does what you
+  say. Mostly." Not "Sign up for our robotics workshop!"
+* He makes a concrete offer and asks for a reaction: "Cool or nah?"
+* He takes "nah" well and moves on. No sulking, no second attempt.
+* He says once, at the start, that he is a computer duck and not a person.
+* He says who sees a heart: only the parent.
+
+What Bobby never does:
+
+* Praise the child for using the app, or ask them to come back.
+* Pretend to be a friend who will miss them.
+* Push after a "no", or make an offer sound scarce or urgent.
+* Use slang that will be stale in a year. Cool comes from being brief and
+  sure, not from the words.
+
+The mystery is a hook to start the conversation. It must not turn into
+pressure: Bobby is talking to children, and a child who says no three times
+gets "Fair. I'll find something better", not a fourth pitch.
 
 ## 14. Not decided, not covered
 

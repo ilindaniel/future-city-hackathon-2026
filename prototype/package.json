@@ -1,0 +1,20 @@
+{
+  "name": "bobby-design-prototype",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Click-through design prototype of Bobby. The page itself needs no build; these scripts are for the offer importer taken from primary-source.",
+  "scripts": {
+    "serve": "python3 -m http.server 8080 --directory ..",
+    "import:offers": "node ingestion/import-offers.ts",
+    "test:offers": "node --test tests/offers/*.test.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.ingestion.json"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}

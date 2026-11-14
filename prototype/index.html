@@ -16,7 +16,14 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body data-world="pixel">
-    <div class="scene" aria-hidden="true"></div>
+    <!-- The pixel world: separate layers, each with its own slow loop. -->
+    <div class="scene" aria-hidden="true">
+      <div class="scene__world">
+        <img class="scene__layer" src="public/assets/heilbronn-pixel-background.png" alt="" />
+        <img class="scene__layer scene__clouds" src="public/assets/heilbronn-pixel-clouds.png" alt="" />
+        <img class="scene__layer scene__grass" src="public/assets/heilbronn-pixel-grass.png" alt="" />
+      </div>
+    </div>
 
     <!-- Screen 1: who is using Bobby -->
     <main class="screen entry" id="screen-entry">
@@ -31,7 +38,7 @@
         <div class="roles">
           <div class="role">
             <div class="role__picture role__picture--kid">
-              <img class="pixel-art" src="assets/duck.png" alt="" />
+              <span class="bobby"><img class="bobby__sprite" src="public/assets/kiko-mallard.png" alt="" /></span>
             </div>
             <button class="button button--block" type="button" data-go="kid" data-i18n="entry.kid"></button>
           </div>
@@ -43,58 +50,65 @@
       </section>
     </main>
 
-    <!-- Screen 2: the child talks to Bobby -->
+    <!-- Screen 2: the child and Bobby -->
     <main class="screen kid" id="screen-kid" hidden>
       <header class="topbar">
         <div class="wordmark glass">Bobby</div>
         <div class="topbar__actions">
+          <button class="icon-button" type="button" data-action="browse" data-i18n="kid.all"></button>
           <button class="icon-button" type="button" data-action="restart" data-i18n="kid.restart"></button>
           <button class="icon-button" type="button" data-action="language"></button>
         </div>
       </header>
 
-      <div id="bubble">
-        <section class="bubble glass" aria-live="polite">
-          <span class="tag tag--ai" data-i18n="kid.aiTag"></span>
-          <p class="bubble__text" id="bubble-text"></p>
-        </section>
-        <div class="bubble__tail" aria-hidden="true"></div>
-      </div>
+      <!-- Everything gathers around Bobby at the bottom of the screen. -->
+      <div class="cluster">
+        <!-- The one event Bobby is showing right now. -->
+        <article class="secret event glass" id="secret" hidden></article>
 
-      <!-- Found events sit above Bobby, so Bobby stays on the grass in every phase. -->
-      <div id="results" hidden>
-        <div class="events" id="kid-events"></div>
-        <button
-          class="button button--bobby button--block"
-          type="button"
-          data-action="share"
-          data-i18n="kid.share"
-          style="margin-top: var(--space-3)"
-        ></button>
-      </div>
-
-      <div class="stage">
-        <div class="sleep-badge glass" id="sleep-badge" aria-hidden="true">
-          <span data-icon="speaker" data-icon-size="small"></span>
-          <span class="sleep-badge__z">z z z</span>
+        <div class="speech" id="bubble" hidden>
+          <section class="bubble glass" aria-live="polite">
+            <span class="tag tag--ai" data-i18n="kid.aiTag"></span>
+            <p class="bubble__text" id="bubble-text"></p>
+          </section>
+          <div class="bubble__tail" aria-hidden="true"></div>
         </div>
-        <button class="bobby-button" type="button" id="bobby-button">
-          <img class="bobby pixel-art" src="assets/duck.png" alt="" />
-        </button>
+
+        <div class="stage">
+          <div class="sleep-badge glass" id="sleep-badge" aria-hidden="true">
+            <span data-icon="speaker" data-icon-size="small"></span>
+            <span data-i18n="kid.badge"></span>
+          </div>
+          <button class="bobby-button" type="button" id="bobby-button">
+            <!-- Three sprites stacked: standing, blinking, talking. -->
+            <span class="bobby" id="bobby">
+              <img class="bobby__sprite" src="public/assets/kiko-mallard.png" alt="" />
+              <img class="bobby__sprite bobby__sprite--blink" src="public/assets/kiko-mallard-blink.png" alt="" />
+              <img class="bobby__sprite bobby__sprite--talk" src="public/assets/kiko-mallard-speaking.png" alt="" />
+            </span>
+          </button>
+        </div>
+
+        <div class="controls" id="controls"></div>
       </div>
-
-      <button class="button button--block mic" type="button" id="mic" data-state="idle">
-        <span class="mic__icons" id="mic-icons"></span>
-        <span class="mic__bars" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span id="mic-label"></span>
-      </button>
-
-      <div class="choices" id="choices"></div>
-
     </main>
 
     <!-- Screen 3: the parent area -->
-    <main class="screen screen--wide" id="screen-parent" hidden>
+    <!-- Screen 2b: the child looks through all offers without Bobby -->
+    <main class="screen browse" id="screen-browse" hidden>
+      <header class="topbar">
+        <button class="icon-button" type="button" data-action="browse-back" data-i18n="browse.back"></button>
+        <div class="topbar__actions">
+          <button class="icon-button" type="button" data-action="language"></button>
+        </div>
+      </header>
+      <h1 class="title browse__title glass" data-i18n="browse.title"></h1>
+      <div class="browse__list" id="browse-list"></div>
+      <button class="button button--bobby button--block" type="button" id="browse-share" data-action="share" data-i18n="kid.share" hidden></button>
+    </main>
+
+    <!-- Screen 3a: a parent signs in with Google -->
+    <main class="screen calm" id="screen-signin" hidden>
       <header class="topbar">
         <div class="wordmark panel">Bobby</div>
         <div class="topbar__actions">
@@ -103,37 +117,126 @@
         </div>
       </header>
 
-      <section class="invite panel">
-        <div>
-          <h2 class="heading" data-i18n="parent.inviteTitle"></h2>
-          <p class="muted" data-i18n="parent.inviteText"></p>
+      <section class="auth panel">
+        <h1 class="title" data-i18n="auth.title"></h1>
+        <p class="muted" data-i18n="auth.lead"></p>
+        <ul class="auth__list">
+          <li data-i18n="auth.point1"></li>
+          <li data-i18n="auth.point2"></li>
+          <li data-i18n="auth.point3"></li>
+        </ul>
+        <p class="auth__error" id="auth-error" role="alert" hidden></p>
+        <button class="google" type="button" id="google-button" data-action="google">
+          <span class="google__mark">
+            <svg class="google__logo" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+            </svg>
+          </span>
+          <span id="google-label"></span>
+        </button>
+        <p class="auth__note muted" data-i18n="auth.note"></p>
+      </section>
+    </main>
+
+    <!-- Screen 3b: after Google, the parent agrees to what is stored -->
+    <main class="screen calm" id="screen-consent" hidden>
+      <header class="topbar">
+        <div class="wordmark panel">Bobby</div>
+        <div class="topbar__actions">
+          <button class="icon-button" type="button" data-action="signout" data-i18n="auth.cancel"></button>
+          <button class="icon-button" type="button" data-action="language"></button>
         </div>
-        <button class="button button--bobby button--small" type="button" data-action="copy" data-i18n="parent.copy"></button>
-      </section>
+      </header>
 
-      <section class="section">
-        <h1 class="title" data-i18n="parent.likedTitle"></h1>
-        <p class="tag" id="theme"></p>
-        <div class="grid" id="liked"></div>
-      </section>
-
-      <section class="section">
-        <h2 class="heading" data-i18n="parent.allTitle"></h2>
-        <label class="field">
-          <span class="field__label" data-i18n="parent.search"></span>
-          <input class="field__input" type="search" id="search" autocomplete="off" />
+      <section class="auth panel">
+        <p class="account">
+          <span class="account__avatar" id="consent-avatar" aria-hidden="true"></span>
+          <span id="consent-account"></span>
+        </p>
+        <h1 class="title" data-i18n="consent.title"></h1>
+        <dl class="auth__facts">
+          <dt data-i18n="consent.storedTitle"></dt>
+          <dd data-i18n="consent.stored"></dd>
+          <dt data-i18n="consent.notStoredTitle"></dt>
+          <dd data-i18n="consent.notStored"></dd>
+        </dl>
+        <label class="check">
+          <input type="checkbox" id="consent-check" />
+          <span data-i18n="consent.check"></span>
         </label>
-        <div class="chips" id="filters"></div>
-        <div class="grid" id="catalogue"></div>
-        <p class="muted" data-i18n="parent.sample"></p>
+        <button class="button button--bobby button--block" type="button" id="consent-button" data-action="consent" data-i18n="consent.continue" disabled></button>
       </section>
+    </main>
+
+    <!-- Screen 3c: the parent area -->
+    <main class="screen screen--wide calm" id="screen-parent" hidden>
+      <header class="topbar">
+        <div class="wordmark panel">Bobby</div>
+        <div class="topbar__actions">
+          <p class="account account--bar">
+            <span class="account__avatar" id="account-avatar" aria-hidden="true"></span>
+            <span class="account__name" id="account-name"></span>
+          </p>
+          <button class="icon-button" type="button" data-action="signout" data-i18n="auth.signOut"></button>
+          <button class="icon-button" type="button" data-action="language"></button>
+        </div>
+      </header>
+
+      <div class="parent-layout">
+        <div class="parent-main">
+          <!-- What the child chose comes first: it is why the parent is here. -->
+          <section class="section">
+            <h1 class="title" data-i18n="parent.likedTitle"></h1>
+            <p class="muted" id="liked-summary"></p>
+            <div class="grid grid--liked" id="liked"></div>
+          </section>
+
+          <section class="section">
+            <div class="section__head">
+              <h2 class="heading" data-i18n="parent.allTitle"></h2>
+              <p class="muted" id="result-count" aria-live="polite"></p>
+            </div>
+            <label class="field">
+              <span class="field__label" data-i18n="parent.search"></span>
+              <input class="field__input" type="search" id="search" autocomplete="off" />
+            </label>
+            <div class="chips" id="filters"></div>
+            <div class="grid" id="catalogue"></div>
+            <p class="muted" id="data-note"></p>
+          </section>
+        </div>
+
+        <aside class="parent-side">
+          <section class="invite panel">
+            <h2 class="heading" data-i18n="parent.inviteTitle"></h2>
+            <p class="muted" data-i18n="parent.inviteText"></p>
+            <label class="field">
+              <span class="field__label" data-i18n="parent.inviteLink"></span>
+              <input class="field__input" type="text" id="invite-link" readonly value="bobby.example/i/duck-7421" />
+            </label>
+            <div class="invite__actions">
+              <button class="button button--bobby button--small" type="button" data-action="copy" data-i18n="parent.copy"></button>
+              <button class="button button--quiet button--small" type="button" data-action="invite-qr" data-i18n="parent.showQr"></button>
+            </div>
+            <p class="invite__status" id="invite-status"></p>
+          </section>
+
+          <section class="panel note">
+            <h2 class="note__title" data-i18n="parent.noteTitle"></h2>
+            <p class="muted" data-i18n="parent.noteText"></p>
+          </section>
+        </aside>
+      </div>
     </main>
 
     <!-- Sheet: the child shows the liked events to a parent -->
     <dialog class="sheet" id="share-sheet" aria-labelledby="share-title">
-      <h2 class="title" id="share-title" data-i18n="share.title"></h2>
+      <h2 class="title" id="share-title"></h2>
       <div class="qr" id="qr" role="img" aria-label="QR code"></div>
-      <p data-i18n="share.text"></p>
+      <p id="share-text"></p>
       <button class="button button--block" type="button" data-action="close-sheet" data-i18n="share.close"></button>
     </dialog>
 

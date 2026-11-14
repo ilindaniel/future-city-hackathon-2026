@@ -25,6 +25,12 @@
   --glass-edge: rgb(32 16 16 / 0.14);
   --glass-line: rgb(255 255 255 / 0.9);
   --scrim: rgb(32 16 16 / 0.5);
+  --danger: #a3261a;
+
+  /* Google's sign-in button, as its brand guidelines specify it */
+  --google-surface: #ffffff;
+  --google-line: #747775;
+  --google-text: #1f1f1f;
 
   /* Type (section 4) */
   --font-display: "Pixelify Sans", "Lexend", system-ui, sans-serif;
@@ -51,6 +57,8 @@
   --bobby-height: min(24dvh, 200px); /* Bobby on screen; see DESIGN.md, section 9 */
   --wide: 1040px;
   --edge: 6px;
+  --radius-small: 8px; /* parent screens only; child screens use stepped corners */
+  --radius: 14px;
   --edge-pressed: 2px;
 
   /* Stepped corners: two steps of --px, and one step for small controls. */
@@ -95,13 +103,14 @@
   --layer-app: 1;
   --layer-sheet: 10;
 
-  /*
-   * The scene is pinned to the bottom of the screen and drawn 25% taller than
-   * the screen, so the grass fills roughly the lower 40% and Bobby always
-   * stands on it. The second value keeps wide screens covered.
-   */
-  --scene-focus: 58% 100%;
-  --scene-size: auto max(125dvh, 56.25vw);
+  /* Width divided by height of the scene art (1672 by 941 pixels). */
+  --scene-ratio: 1.7768;
+
+  /* World loops: slow and stepped, so the pixel art moves in jumps. */
+  --time-clouds: 18s;
+  --time-grass: 3.2s;
+  --time-bob: 2.8s;
+  --time-blink: 6s;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,0 +1,72 @@
+[
+  {
+    "knr": "261H207006",
+    "haupttitel": "Märchenhaft mit ScratchJunior eine Geschichte programmieren: Das mutige Tier",
+    "hauptuntertitel": "Ein Workshop für Kinder (4 bis 7 Jahre) mit Begleitperson",
+    "web_info": "Kinder programmieren mit ScratchJunior eine eigene Geschichte.",
+    "inhalt": "Kinder programmieren mit ScratchJunior eine eigene Geschichte.",
+    "ort": "Heilbronn, Haus der Familie, Raum 8",
+    "gebnorm": "10.00",
+    "status": "3",
+    "termine": [
+      {
+        "tag": "2026-12-05",
+        "zeitvon": "09:30:00",
+        "zeitbis": "11:00:00",
+        "termin_status": "normale Planung"
+      }
+    ],
+    "kategorien": {
+      "199": "Kindergartenkind (3-6 Jahre)",
+      "1282": "Schulkinder & Jugendliche (ab 6 Jahren)"
+    },
+    "dozenten": [
+      {
+        "name": "Example",
+        "email": "private@example.com"
+      }
+    ]
+  },
+  {
+    "knr": "261H207010",
+    "haupttitel": "Künstliche Intelligenz im Familienalltag",
+    "hauptuntertitel": "Ein Vortrag für Eltern",
+    "web_info": "Eltern erfahren mehr über KI.",
+    "inhalt": "Eltern erfahren mehr über KI.",
+    "ort": "Online",
+    "gebnorm": "0.00",
+    "status": "1",
+    "termine": [
+      {
+        "tag": "2026-11-17",
+        "zeitvon": "19:30:00",
+        "zeitbis": "21:00:00",
+        "termin_status": "normale Planung"
+      }
+    ],
+    "kategorien": {
+      "13": "Eltern"
+    }
+  },
+  {
+    "knr": "261H207012",
+    "haupttitel": "Digitale Medien kreativ erleben",
+    "hauptuntertitel": "Ein Workshop für Kinder (4 bis 7 Jahre) mit Begleitperson",
+    "web_info": "Kinder gestalten Bilder und Filme mit verschiedenen digitalen Medien und Apps.",
+    "inhalt": "Kinder gestalten Bilder und Filme mit verschiedenen digitalen Medien und Apps.",
+    "ort": "Heilbronn, Haus der Familie, Raum 1",
+    "gebnorm": "5.00",
+    "status": "1",
+    "termine": [
+      {
+        "tag": "2026-11-14",
+        "zeitvon": "10:00:00",
+        "zeitbis": "11:30:00",
+        "termin_status": "normale Planung"
+      }
+    ],
+    "kategorien": {
+      "199": "Kindergartenkind (3-6 Jahre)"
+    }
+  }
+]
